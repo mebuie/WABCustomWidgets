@@ -47,7 +47,7 @@ define([
     CustomFeaturelayerChooserFromMap, ToggleButton) {
 
     return declare([BaseWidget, _WidgetsInTemplateMixin], {
-      name: 'Filter',
+      name: 'FilterMulti',
       baseClass: 'jimu-widget-filtermulti',
       //style="display:${hasValue}"
 

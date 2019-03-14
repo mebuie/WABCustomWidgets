@@ -62,7 +62,17 @@
       }
     },
 
-    "widgets": [{
+    "widgets": [
+      // **************************      Add a reference to your widgets here        ***********************************
+
+      {
+        "label": "filtermulti",
+        "uri": "widgets/FilterMulti/Widget"
+      },
+
+
+      // **************************               Leave these alone                  ***********************************
+      {
       "label": "Demo",
       "uri": "widgets/samplewidgets/Demo/Widget"
     },{
