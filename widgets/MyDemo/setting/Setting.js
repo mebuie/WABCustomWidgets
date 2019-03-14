@@ -32,15 +32,15 @@ function(declare, BaseWidgetSetting) {
 
     setConfig: function(config){
       // assigns the config.json values to elements.
-      this.textNode.value = config.inputText;
+      // this.textNode.value = config.inputText;
     },
 
     getConfig: function(){
       // Returns a new config object with updated values, when the user selects OK on setting screen.
-      console.log(this.textNode.value)
-      return {
-        inputText: this.textNode.value
-      };
+      // console.log(this.textNode.value)
+      // return {
+      //   inputText: this.textNode.value
+      // };
     }
   });
 });
