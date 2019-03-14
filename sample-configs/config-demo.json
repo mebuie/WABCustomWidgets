@@ -67,11 +67,11 @@
         "label": "filtermulti",
         "uri": "widgets/FilterMulti/Widget"
       },{
-        "label": "Demo",
-        "uri": "widgets/Demo/Widget"
+        "label": "MyDemo",
+        "uri": "widgets/MyDemo/Widget"
       },{
-      "label": "MyDemo",
-      "uri": "widgets/samplewidgets/MyDemo/Widget"
+      "label": "Demo",
+      "uri": "widgets/samplewidgets/Demo/Widget"
     },{
       "label": "UseJQuery",
       "uri": "widgets/samplewidgets/UseJQuery/Widget"
