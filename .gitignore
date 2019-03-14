@@ -1,18 +1,27 @@
 
-/configs/*
-/dynamic-modules/*
-/jimu.js/*
-/libs/*
-/predefined-apps/*
+# /configs/*
+# /dynamic-modules/*
+# /jimu.js/*
+# /libs/*
+# /predefined-apps/*
 
-.jshintignore
-.jshintrc
-3rd-party-licenses.txt
-config-readme.txt
-copy-list.txt
-env.js
-index.html
-init.js
-readme.html
-simpleLoader.js
-web.config
+# .jshintignore
+# .jshintrc
+# 3rd-party-licenses.txt
+# config-readme.txt
+# copy-list.txt
+# env.js
+# index.html
+# init.js
+# readme.html
+# simpleLoader.js
+# web.config
+
+/**
+
+!/.gitignore
+!/confi.json
+!/stemapp.iml
+!/.idea/**
+!/widgets/MyDemo/**
+!/sample-configs/**
