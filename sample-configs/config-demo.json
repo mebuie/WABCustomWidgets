@@ -64,9 +64,6 @@
 
     "widgets": [
       {
-        "label": "filtermulti",
-        "uri": "widgets/FilterMulti/Widget"
-      },{
         "label": "MyDemo",
         "uri": "widgets/MyDemo/Widget"
       },{
