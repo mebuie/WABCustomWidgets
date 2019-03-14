@@ -5,7 +5,7 @@ function(declare, BaseWidget) {
 
     // Note, the widget's template does not support dijits in the template. If you need to use dijits in the
     // template, add dijit/_WidgetsInTemplateMixin to your required list, and ass this class to your widget.
-    // See define the template section of documentation. 
+    // See define the template section of documentation.
 
     // DemoWidget code goes here
 
