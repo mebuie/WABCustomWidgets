@@ -24,18 +24,22 @@ function(declare, BaseWidgetSetting) {
     baseClass: 'jimu-widget-mydemo-setting',
 
     postCreate: function(){
-      //the config object is passed in
+      // the config objects are passed in
       this.setConfig(this.config);
+
+      // do other stuff here.
     },
 
     setConfig: function(config){
-      this.textNode.value = config.configText;
+      // assigns the config.json values to elements.
+      this.textNode.value = config.inputText;
     },
 
     getConfig: function(){
-      //WAB will get config object through this method
+      // Returns a new config object with updated values, when the user selects OK on setting screen.
+      console.log(this.textNode.value)
       return {
-        configText: this.textNode.value
+        inputText: this.textNode.value
       };
     }
   });
