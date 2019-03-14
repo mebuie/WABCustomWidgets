@@ -1,3 +1,20 @@
 .jimu-widget-demo-setting input{
   margin-left: 10px;
 }
+
+.jimu-widget-mydemo-setting .hor-center {
+    display: flex;
+    align-items: center;
+}
+
+.jimu-widget-mydemo-setting .settings-title {
+    font-size: 16px;
+    color: #000000;
+    font-family: "Avenir Medium";
+    height: 22px;
+}
+
+.jimu-widget-mydemo-setting .settings-tip {
+    font-size: 12px;
+    height: 16px;
+}
