@@ -18,3 +18,43 @@
     font-size: 12px;
     height: 16px;
 }
+
+.jimu-widget-mydemo-setting .items-list {
+    left: 0;
+    width: 300px;
+}
+
+.jimu-widget-mydemo-setting .add-btn {
+    display: inline-block;
+    width: 100%;
+    height: 32px;
+    background-color: #24B5CC;
+    color: #ffffff;
+    text-align: center;
+    cursor: pointer;
+}
+
+.jimu-widget-mydemo-setting .add-btn:hover {
+    background-color: #0090A7;
+}
+
+.jimu-widget-mydemo-setting .add-btn > div {
+    display: inline-block;
+    cursor: pointer;
+    height: 32px;
+    line-height: 32px;
+    font-size: 12px;
+}
+
+.jimu-widget-mydemo-setting .add-btn .icon {
+    position: relative;
+    top: 1px;
+    width: 12px;
+    height: 12px;
+    background: url(images/add.png) center center no-repeat;
+    background-size: contain;
+}
+
+.jimu-widget-mydemo-setting .add-btn .tip {
+    margin-left: 8px;
+}
