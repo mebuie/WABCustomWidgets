@@ -53,21 +53,31 @@ define([
 
     _onBtnAddGroupClicked: function() {
       console.log("Group button clicked")
+      // if (this.layerChooserSelect) {
+      //   this.layerChooserSelect.destroy();
+      // }
+      // this.layerChooserSelect = null;
+      // console.log(this.layerChooserSelect)
+      // var layerChooser = new CustomFeaturelayerChooserFromMap({
+      //   showLayerFromFeatureSet: false,
+      //   showTable: false,
+      //   onlyShowVisible: false,
+      //   onlyShowWebMapLayers: true,
+      //   createMapResponse: this.map.webMapResponse
+      // })
+      // this.layerChooserSelect = new LayerChooserFromMapWithDropbox({
+      //   layerChooser: layerChooser
+      // })
+      // this.layerChooserSelect.placeAt(this.layerTd)
+
       if (this.layerChooserSelect) {
         this.layerChooserSelect.destroy();
       }
       this.layerChooserSelect = null;
-      console.log(this.layerChooserSelect)
-      var layerChooser = new CustomFeaturelayerChooserFromMap({
-        showLayerFromFeatureSet: false,
-        showTable: false,
-        onlyShowVisible: false,
-        onlyShowWebMapLayers: true,
-        createMapResponse: this.map.webMapResponse
-      })
-      this.layerChooserSelect = new LayerChooserFromMapWithDropbox({
-        layerChooser: layerChooser
-      })
+      this.layerChooserSelect= new SingleSetting({
+        map: this.map,
+        nls: this.nls
+      });
       this.layerChooserSelect.placeAt(this.layerTd)
 
     },
