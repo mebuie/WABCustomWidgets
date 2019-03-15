@@ -14,7 +14,11 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
+// This file has been modified from the Filter widget by Mark Buie to add support
+// for group filtering.
 ///////////////////////////////////////////////////////////////////////////
+
 
 define([
   'dojo/_base/declare',
