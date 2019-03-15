@@ -43,26 +43,28 @@ define([
       // do other stuff here.
     },
 
-    // _onBtnAddGroupClicked: function() {
-    //   console.log("Group button clicked")
-    //   // if (this.layerChooserSelect) {
-    //   //   this.layerChooserSelect.destroy();
-    //   // }
-    //   // this.layerChooserSelect = null;
-    //   // console.log(this.layerChooserSelect)
-    //   // var layerChooser = new CustomFeaturelayerChooserFromMap({
-    //   //   showLayerFromFeatureSet: false,
-    //   //   showTable: false,
-    //   //   onlyShowVisible: false,
-    //   //   onlyShowWebMapLayers: true,
-    //   //   createMapResponse: this.map.webMapResponse
-    //   // })
-    //   // this.layerChooserSelect = new LayerChooserFromMapWithDropbox({
-    //   //   layerChooser: layerChooser
-    //   // })
-    //   // this.layerChooserSelect.placeAt(this.layerTd)
-    //
-    // },
+    _onBtnAddGroupClicked: function() {
+      console.log("Group button clicked")
+
+      return;
+      // if (this.layerChooserSelect) {
+      //   this.layerChooserSelect.destroy();
+      // }
+      // this.layerChooserSelect = null;
+      // console.log(this.layerChooserSelect)
+      // var layerChooser = new CustomFeaturelayerChooserFromMap({
+      //   showLayerFromFeatureSet: false,
+      //   showTable: false,
+      //   onlyShowVisible: false,
+      //   onlyShowWebMapLayers: true,
+      //   createMapResponse: this.map.webMapResponse
+      // })
+      // this.layerChooserSelect = new LayerChooserFromMapWithDropbox({
+      //   layerChooser: layerChooser
+      // })
+      // this.layerChooserSelect.placeAt(this.layerTd)
+
+    },
 
     setConfig: function(config){
       // assigns the config.json values to elements.
