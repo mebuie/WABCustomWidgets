@@ -15,11 +15,23 @@
 ///////////////////////////////////////////////////////////////////////////
 
 define([
-  'dojo/_base/declare',
-  'dijit/_WidgetsInTemplateMixin',
-  'jimu/BaseWidgetSetting'
-],
-function(declare, _WidgetsInTemplateMixin, BaseWidgetSetting) {
+    'dojo/on',
+    'dojo/query',
+    'dojo/_base/html',
+    'dojo/_base/lang',
+    'dojo/_base/array',
+    'dojo/_base/declare',
+    'dijit/_WidgetsInTemplateMixin',
+    'esri/lang',
+    'jimu/utils',
+    'jimu/BaseWidgetSetting',
+    './SingleFilterSetting',
+    'jimu/LayerInfos/LayerInfos',
+    'jimu/dijit/CheckBox',
+    'jimu/dijit/LoadingShelter'
+  ],
+  function(on, query, html, lang, array, declare, _WidgetsInTemplateMixin, esriLang, jimuUtils, BaseWidgetSetting,
+           SingleSetting, LayerInfos) {
 
   return declare([BaseWidgetSetting, _WidgetsInTemplateMixin], {
     baseClass: 'jimu-widget-mydemo-setting',
@@ -30,6 +42,27 @@ function(declare, _WidgetsInTemplateMixin, BaseWidgetSetting) {
 
       // do other stuff here.
     },
+
+    // _onBtnAddGroupClicked: function() {
+    //   console.log("Group button clicked")
+    //   // if (this.layerChooserSelect) {
+    //   //   this.layerChooserSelect.destroy();
+    //   // }
+    //   // this.layerChooserSelect = null;
+    //   // console.log(this.layerChooserSelect)
+    //   // var layerChooser = new CustomFeaturelayerChooserFromMap({
+    //   //   showLayerFromFeatureSet: false,
+    //   //   showTable: false,
+    //   //   onlyShowVisible: false,
+    //   //   onlyShowWebMapLayers: true,
+    //   //   createMapResponse: this.map.webMapResponse
+    //   // })
+    //   // this.layerChooserSelect = new LayerChooserFromMapWithDropbox({
+    //   //   layerChooser: layerChooser
+    //   // })
+    //   // this.layerChooserSelect.placeAt(this.layerTd)
+    //
+    // },
 
     setConfig: function(config){
       // assigns the config.json values to elements.
