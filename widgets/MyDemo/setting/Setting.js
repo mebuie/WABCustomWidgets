@@ -27,11 +27,13 @@ define([
     'jimu/BaseWidgetSetting',
     './SingleFilterSetting',
     'jimu/LayerInfos/LayerInfos',
+    '../CustomFeaturelayerChooserFromMap',
+    'jimu/dijit/LayerChooserFromMapWithDropbox',
     'jimu/dijit/CheckBox',
     'jimu/dijit/LoadingShelter'
   ],
   function(on, query, html, lang, array, declare, _WidgetsInTemplateMixin, esriLang, jimuUtils, BaseWidgetSetting,
-           SingleSetting, LayerInfos) {
+           SingleSetting, LayerInfos, CustomFeaturelayerChooserFromMap, LayerChooserFromMapWithDropbox ) {
 
   return declare([BaseWidgetSetting, _WidgetsInTemplateMixin], {
     baseClass: 'jimu-widget-mydemo-setting',
@@ -45,24 +47,22 @@ define([
 
     _onBtnAddGroupClicked: function() {
       console.log("Group button clicked")
-
-      return;
-      // if (this.layerChooserSelect) {
-      //   this.layerChooserSelect.destroy();
-      // }
-      // this.layerChooserSelect = null;
-      // console.log(this.layerChooserSelect)
-      // var layerChooser = new CustomFeaturelayerChooserFromMap({
-      //   showLayerFromFeatureSet: false,
-      //   showTable: false,
-      //   onlyShowVisible: false,
-      //   onlyShowWebMapLayers: true,
-      //   createMapResponse: this.map.webMapResponse
-      // })
-      // this.layerChooserSelect = new LayerChooserFromMapWithDropbox({
-      //   layerChooser: layerChooser
-      // })
-      // this.layerChooserSelect.placeAt(this.layerTd)
+      if (this.layerChooserSelect) {
+        this.layerChooserSelect.destroy();
+      }
+      this.layerChooserSelect = null;
+      console.log(this.layerChooserSelect)
+      var layerChooser = new CustomFeaturelayerChooserFromMap({
+        showLayerFromFeatureSet: false,
+        showTable: false,
+        onlyShowVisible: false,
+        onlyShowWebMapLayers: true,
+        createMapResponse: this.map.webMapResponse
+      })
+      this.layerChooserSelect = new LayerChooserFromMapWithDropbox({
+        layerChooser: layerChooser
+      })
+      this.layerChooserSelect.placeAt(this.layerTd)
 
     },
 
