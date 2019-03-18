@@ -22,6 +22,8 @@
 
 define([
     'dojo/on',
+    'dojo/dom-construct',
+    'dojo/dom-class',
     'dojo/query',
     'dojo/_base/html',
     'dojo/_base/lang',
@@ -32,17 +34,20 @@ define([
     'jimu/utils',
     'jimu/BaseWidgetSetting',
     './SingleFilterSetting',
+    './GroupFilter',
     'jimu/LayerInfos/LayerInfos',
     '../CustomFeaturelayerChooserFromMap',
     'jimu/dijit/LayerChooserFromMapWithDropbox',
     'jimu/dijit/CheckBox',
     'jimu/dijit/LoadingShelter'
   ],
-  function(on, query, html, lang, array, declare, _WidgetsInTemplateMixin, esriLang, jimuUtils, BaseWidgetSetting,
-           SingleSetting, LayerInfos, CustomFeaturelayerChooserFromMap, LayerChooserFromMapWithDropbox ) {
+  function(on, domConstruct, domClass, query, html, lang, array, declare, _WidgetsInTemplateMixin, esriLang, jimuUtils, BaseWidgetSetting,
+           SingleSetting, GroupFilter, LayerInfos, CustomFeaturelayerChooserFromMap, LayerChooserFromMapWithDropbox ) {
 
   return declare([BaseWidgetSetting, _WidgetsInTemplateMixin], {
     baseClass: 'jimu-widget-mydemo-setting',
+
+    groupCounter: 0,
 
     postCreate: function(){
       // the config objects are passed in
@@ -50,6 +55,22 @@ define([
 
       // do other stuff here.
     },
+
+
+    setConfig: function(config){
+      // assigns the config.json values to elements.
+      // this.textNode.value = config.inputText;
+    },
+
+    getConfig: function(){
+      // Returns a new config object with updated values, when the user selects OK on setting screen.
+      // console.log(this.textNode.value)
+      // return {
+      //   inputText: this.textNode.value
+      // };
+    },
+
+    //*************************************************   BEGIN WIDGET METHODS   ***************************************
 
     _onBtnAddGroupClicked: function() {
       console.log("Group button clicked")
@@ -70,29 +91,36 @@ define([
       // })
       // this.layerChooserSelect.placeAt(this.layerTd)
 
-      if (this.layerChooserSelect) {
-        this.layerChooserSelect.destroy();
-      }
-      this.layerChooserSelect = null;
-      this.layerChooserSelect= new SingleSetting({
-        map: this.map,
+      var filterGroup = new GroupFilter({
         nls: this.nls
       });
-      this.layerChooserSelect.placeAt(this.layerTd)
+      console.log(filterGroup)
+      filterGroup.placeAt(this.groupFilter);
 
     },
 
-    setConfig: function(config){
-      // assigns the config.json values to elements.
-      // this.textNode.value = config.inputText;
-    },
+    createGroupBlock: function () {
+      // this.groupCounter++;
+      //
+      // var dsNode = domConstruct.create("div", {
+      //   id: 'grpDiv_' + this.groupCounter,
+      //   'class': 'group-block'
+      // });
+      //
+      // domConstruct.place(dsNode, this.layerMappingBlock);
+      //
+      // var groupSetting = domConstruct.create("div", {
+      //   'class': 'group-setting-table'
+      // })
+      //
+      // var layerChooserSelect= new SingleSetting({
+      //   map: this.map,
+      //   nls: this.nls
+      // });
+      // layerChooserSelect.placeAt(dsNode)
 
-    getConfig: function(){
-      // Returns a new config object with updated values, when the user selects OK on setting screen.
-      // console.log(this.textNode.value)
-      // return {
-      //   inputText: this.textNode.value
-      // };
     }
+
+
   });
 });
