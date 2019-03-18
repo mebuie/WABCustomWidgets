@@ -45,7 +45,7 @@ define([
       },
 
       startup: function() {
-        this.createGroupBlock();
+        this.createFilterBlock();
       },
 
 
@@ -60,6 +60,10 @@ define([
         // return {
         //   inputText: this.textNode.value
         // };
+      },
+
+      createFilterBlock: function() {
+        
       }
     });
   });
