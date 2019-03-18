@@ -1,4 +1,8 @@
-.jimu-widget-demo-setting input{
+
+@import url("SingleFilterSetting.css");
+@import url("GroupFilter.css");
+
+.jimu-widget-mydemo-setting input{
   margin-left: 10px;
 }
 
@@ -57,4 +61,16 @@
 
 .jimu-widget-mydemo-setting .add-btn .tip {
     margin-left: 8px;
+}
+
+.jimu-widget-mydemo-setting .group-block {
+    background-color: #FFFFFF;
+    border-color: #e1e1e1;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    width: 100%;
+    text-align: left;
+    position: relative;
+    margin-top: 10px;
 }
