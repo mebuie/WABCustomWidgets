@@ -1,3 +1,19 @@
-.jimu-widget-groupfilter-setting .group-filter {
+.jimu-widget-groupfilter-setting {
+    background-color: #FFFFFF;
+    border-color: #e1e1e1;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    width: 100%;
+    text-align: left;
+    position: relative;
+    margin-top: 10px;
+}
+
+.jimu-widget-groupfilter-setting .group-container {
+    width: 100%;
+}
+
+.jimu-widget-groupfilter-setting .left {
     float: left;
 }
