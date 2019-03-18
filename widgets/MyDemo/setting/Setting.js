@@ -33,7 +33,6 @@ define([
     'esri/lang',
     'jimu/utils',
     'jimu/BaseWidgetSetting',
-    './SingleFilterSetting',
     './GroupFilter',
     'jimu/LayerInfos/LayerInfos',
     '../CustomFeaturelayerChooserFromMap',
@@ -41,8 +40,8 @@ define([
     'jimu/dijit/CheckBox',
     'jimu/dijit/LoadingShelter'
   ],
-  function(on, domConstruct, domClass, query, html, lang, array, declare, _WidgetsInTemplateMixin, esriLang, jimuUtils, BaseWidgetSetting,
-           SingleSetting, GroupFilter, LayerInfos, CustomFeaturelayerChooserFromMap, LayerChooserFromMapWithDropbox ) {
+  function(on, domConstruct, domClass, query, html, lang, array, declare, _WidgetsInTemplateMixin, esriLang, jimuUtils,
+           BaseWidgetSetting, GroupFilter, LayerInfos, CustomFeaturelayerChooserFromMap, LayerChooserFromMapWithDropbox ) {
 
   return declare([BaseWidgetSetting, _WidgetsInTemplateMixin], {
     baseClass: 'jimu-widget-mydemo-setting',

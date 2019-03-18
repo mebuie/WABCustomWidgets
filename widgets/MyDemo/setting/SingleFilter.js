@@ -17,7 +17,6 @@ define([
     'dijit/form/ValidationTextBox',
     'dijit/form/CheckBox',
     'jimu/BaseWidgetSetting',
-    './SingleFilterSetting',
     'jimu/LayerInfos/LayerInfos',
     '../CustomFeaturelayerChooserFromMap',
     'jimu/dijit/LayerChooserFromMapWithDropbox',
@@ -26,7 +25,7 @@ define([
   ],
   function(on, domConstruct, domClass, query, html, template, lang, array, declare, _WidgetBase, _TemplatedMixin,
            _WidgetsInTemplateMixin, esriLang, jimuUtils,
-           TextBox, ValidationTextBox, CheckBox, BaseWidgetSetting, SingleSetting, LayerInfos,
+           TextBox, ValidationTextBox, CheckBox, BaseWidgetSetting, LayerInfos,
            CustomFeaturelayerChooserFromMap, LayerChooserFromMapWithDropbox ) {
 
     return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
@@ -63,7 +62,7 @@ define([
       },
 
       createFilterBlock: function() {
-        
+
       }
     });
   });

@@ -1,5 +1,6 @@
 define([
     'dojo/on',
+    'dojo/dom',
     'dojo/dom-construct',
     'dojo/dom-class',
     'dojo/query',
@@ -17,16 +18,15 @@ define([
     'dijit/form/ValidationTextBox',
     'dijit/form/CheckBox',
     'jimu/BaseWidgetSetting',
-    './SingleFilterSetting',
     'jimu/LayerInfos/LayerInfos',
     '../CustomFeaturelayerChooserFromMap',
     'jimu/dijit/LayerChooserFromMapWithDropbox',
     'jimu/dijit/CheckBox',
     'jimu/dijit/LoadingShelter'
   ],
-  function(on, domConstruct, domClass, query, html, template, lang, array, declare, _WidgetBase, _TemplatedMixin,
+  function(on, dom, domConstruct, domClass, query, html, template, lang, array, declare, _WidgetBase, _TemplatedMixin,
            _WidgetsInTemplateMixin, esriLang, jimuUtils,
-           TextBox, ValidationTextBox, CheckBox, BaseWidgetSetting, SingleSetting, LayerInfos,
+           TextBox, ValidationTextBox, CheckBox, BaseWidgetSetting, LayerInfos,
            CustomFeaturelayerChooserFromMap, LayerChooserFromMapWithDropbox ) {
 
     return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
@@ -52,9 +52,7 @@ define([
       },
 
       startup: function() {
-        console.log("1")
         this.createGroupBlock();
-        console.log("2")
       },
 
 
@@ -74,21 +72,26 @@ define([
       createGroupBlock: function() {
         this.groupfilterCounter++;
 
-        // var groupFilterNode = domConstruct.create('div', {
-        //   id: 'grdDiv_' + this.groupfilterCounter,
-        //   'class': 'group-block'
-        // });
-
-        console.log("3")
         var txtGroupName = new ValidationTextBox({
           name: "txtGroupName",
           class: 'groupName-textbox',
           placeHolder: this.nls.groupNameValidationBoxHint,
           required: "true"
         });
-        console.log("4")
-        console.log(txtGroupName)
         domConstruct.place(txtGroupName.domNode, this.groupNameValidationBox);
+
+        var deleteGroupBlock = domConstruct.create("div", {
+          id: 'groupDelete_' + this.groupfilterCounter,
+          class: 'groupName-delete'
+        });
+        var deleteGroupBlockAction = on(deleteGroupBlock, "click", lang.hitch(this, function() {
+          deleteGroupBlockAction.remove();
+          domConstruct.destroy(dom.byId('groupDelete_' + this.groupfilterCounter));
+        }));
+      },
+
+      removeGroup: function(groupId) {
+        domConstruct.destroy(dom.byId(''))
       }
 
 
