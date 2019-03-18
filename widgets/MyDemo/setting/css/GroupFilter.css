@@ -12,8 +12,22 @@
 
 .jimu-widget-groupfilter-setting .group-container {
     width: 100%;
+    margin-left: 10px;
 }
 
 .jimu-widget-groupfilter-setting .left {
     float: left;
 }
+
+.jimu-widget-groupfilter-setting .groupName-container {
+    width: 100%;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.jimu-widget-groupfilter-setting .groupName-textbox {
+    margin-left: 10px;
+    width: 275px;
+}
+

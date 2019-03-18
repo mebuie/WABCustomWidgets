@@ -82,7 +82,7 @@ define([
         console.log("3")
         var txtGroupName = new ValidationTextBox({
           name: "txtGroupName",
-          'class': 'groupName-textbox',
+          class: 'groupName-textbox',
           placeHolder: this.nls.groupNameValidationBoxHint,
           required: "true"
         });
