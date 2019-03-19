@@ -82,12 +82,13 @@ define([
 
         var deleteGroupBlock = domConstruct.create("div", {
           id: 'groupDelete_' + this.groupfilterCounter,
-          class: 'groupName-delete'
+          class: 'group-block-delete'
         });
         var deleteGroupBlockAction = on(deleteGroupBlock, "click", lang.hitch(this, function() {
           deleteGroupBlockAction.remove();
           domConstruct.destroy(dom.byId('groupDelete_' + this.groupfilterCounter));
         }));
+        domConstruct.place(deleteGroupBlock, this.groupBlockDelete)
       },
 
       removeGroup: function(groupId) {
