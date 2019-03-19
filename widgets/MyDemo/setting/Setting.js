@@ -85,6 +85,8 @@ define([
         id: "filterGroup_" + this.groupFilterCounter,
         nls: this.nls
       });
+      // Let's pass the widget to itself so we can use the destroy() method within the widget.
+      // TODO: is there a better way to do this?
       filterGroup.referenceToSelf = filterGroup;
       filterGroup.placeAt(this.groupFilter);
     }
