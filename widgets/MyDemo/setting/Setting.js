@@ -67,57 +67,23 @@ define([
       // return {
       //   inputText: this.textNode.value
       // };
+
     },
 
     //*************************************************   BEGIN WIDGET METHODS   ***************************************
 
     _onBtnAddGroupClicked: function() {
-      console.log("Group button clicked")
-      // if (this.layerChooserSelect) {
-      //   this.layerChooserSelect.destroy();
-      // }
-      // this.layerChooserSelect = null;
-      // console.log(this.layerChooserSelect)
-      // var layerChooser = new CustomFeaturelayerChooserFromMap({
-      //   showLayerFromFeatureSet: false,
-      //   showTable: false,
-      //   onlyShowVisible: false,
-      //   onlyShowWebMapLayers: true,
-      //   createMapResponse: this.map.webMapResponse
-      // })
-      // this.layerChooserSelect = new LayerChooserFromMapWithDropbox({
-      //   layerChooser: layerChooser
-      // })
-      // this.layerChooserSelect.placeAt(this.layerTd)
 
+      this.createGroupBlock();
+
+    },
+
+    createGroupBlock: function () {
       var filterGroup = new GroupFilter({
         nls: this.nls
       });
       console.log(filterGroup)
       filterGroup.placeAt(this.groupFilter);
-
-    },
-
-    createGroupBlock: function () {
-      // this.groupCounter++;
-      //
-      // var dsNode = domConstruct.create("div", {
-      //   id: 'grpDiv_' + this.groupCounter,
-      //   'class': 'group-block'
-      // });
-      //
-      // domConstruct.place(dsNode, this.layerMappingBlock);
-      //
-      // var groupSetting = domConstruct.create("div", {
-      //   'class': 'group-setting-table'
-      // })
-      //
-      // var layerChooserSelect= new SingleSetting({
-      //   map: this.map,
-      //   nls: this.nls
-      // });
-      // layerChooserSelect.placeAt(dsNode)
-
     }
 
 
