@@ -38,6 +38,7 @@ define([
       // Options
       map: null,
       nls: null,
+      referenceToSelf: null,
 
       // postMixInProperties: function() {
       //   this.nls = lang.mixin(this.nls, window.jimuNls.common);
@@ -70,8 +71,12 @@ define([
       },
 
       createGroupBlock: function() {
+        console.log(this.referenceToSelf)
+
+        // Let's index the group filter blocks so we can reference them later.
         this.groupfilterCounter++;
 
+        // Let's add a validation box to recieve the group filter name.
         var txtGroupName = new ValidationTextBox({
           name: "txtGroupName",
           class: 'groupName-textbox',
@@ -80,13 +85,16 @@ define([
         });
         domConstruct.place(txtGroupName.domNode, this.groupNameValidationBox);
 
+        // Let's create a way for the user to delete a group filter.
         var deleteGroupBlock = domConstruct.create("div", {
           id: 'groupDelete_' + this.groupfilterCounter,
-          class: 'group-block-delete'
+          'class': 'group-block-delete-button'
         });
         var deleteGroupBlockAction = on(deleteGroupBlock, "click", lang.hitch(this, function() {
+          console.log("delete")
           deleteGroupBlockAction.remove();
-          domConstruct.destroy(dom.byId('groupDelete_' + this.groupfilterCounter));
+          this.referenceToSelf.destroy();
+          // domConstruct.destroy(dom.byId('groupDelete_' + this.groupfilterCounter));
         }));
         domConstruct.place(deleteGroupBlock, this.groupBlockDelete)
       },

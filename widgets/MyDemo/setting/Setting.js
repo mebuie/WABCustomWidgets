@@ -46,7 +46,7 @@ define([
   return declare([BaseWidgetSetting, _WidgetsInTemplateMixin], {
     baseClass: 'jimu-widget-mydemo-setting',
 
-    groupCounter: 0,
+    groupFilterCounter: 0,
 
     postCreate: function(){
       // the config objects are passed in
@@ -79,10 +79,13 @@ define([
     },
 
     createGroupBlock: function () {
+      this.groupFilterCounter++
+
       var filterGroup = new GroupFilter({
+        id: "filterGroup_" + this.groupFilterCounter,
         nls: this.nls
       });
-      console.log(filterGroup)
+      filterGroup.referenceToSelf = filterGroup;
       filterGroup.placeAt(this.groupFilter);
     }
 
