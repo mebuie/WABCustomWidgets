@@ -38,7 +38,6 @@ define([
       // Options
       map: null,
       nls: null,
-      referenceToSelf: null,
 
       // postMixInProperties: function() {
       //   this.nls = lang.mixin(this.nls, window.jimuNls.common);
@@ -93,21 +92,9 @@ define([
         var deleteGroupBlockAction = on(deleteGroupBlock, "click", lang.hitch(this, function() {
           console.log("delete")
           deleteGroupBlockAction.remove();
-          this.referenceToSelf.destroy();
-          // domConstruct.destroy(dom.byId('groupDelete_' + this.groupfilterCounter));
+          this.destroy();
         }));
         domConstruct.place(deleteGroupBlock, this.groupBlockDelete)
-      },
-
-      removeGroup: function(groupId) {
-        domConstruct.destroy(dom.byId(''))
       }
-
-
-
-
-
-
-
     });
   });
