@@ -57,6 +57,11 @@ define([
       // do other stuff here.
     },
 
+    onOpen: function() {
+      console.log("MyDemo Fired")
+    },
+
+
     setConfig: function(config){
       this.config = config;
 
@@ -64,10 +69,11 @@ define([
         // Load parameters here.
         // TODO: for each group filter, recreate the group filter.
         console.log(this.config.groups)
-      } else {
 
-        return false
-        
+        array.forEach( this.config.groups, lang.hitch(this, function ( group ) {
+          this.createGroupBlock( group )
+        }));
+
       }
 
     },
@@ -98,14 +104,17 @@ define([
 
     },
 
-    createGroupBlock: function () {
+    createGroupBlock: function (parameters) {
+      parameters = parameters || null;
+
       this.groupFilterCounter++
 
       var id = "filterGroup_" + this.groupFilterCounter;
 
       var filterGroup = new GroupFilter({
         id: id,
-        nls: this.nls
+        nls: this.nls,
+        parameters: parameters
       });
       filterGroup.placeAt(this.groupFilter);
     }

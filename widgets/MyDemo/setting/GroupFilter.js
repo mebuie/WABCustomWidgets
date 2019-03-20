@@ -38,7 +38,7 @@ define([
       // Options
       map: null,
       nls: null,
-      parameters: [],
+      parameters: null,
 
       // postMixInProperties: function() {
       //   this.nls = lang.mixin(this.nls, window.jimuNls.common);
@@ -47,14 +47,10 @@ define([
 
       postCreate: function(){
         console.log("GroupFilter postCreate")
+        this.createGroupBlock();
 
         // do other stuff here.
       },
-
-      startup: function() {
-        this.createGroupBlock();
-      },
-
 
       setConfig: function(config){
         console.log("GroupFilter setConfig")
@@ -63,9 +59,10 @@ define([
       getConfig: function(){
         console.log("GroupFilter getConfig")
 
+        // Let's create a config file to store the parameters of the group filter.
         var config = {
           groupId: this.id,
-          groupName: this.txtGroupName.get('value')
+          groupName: this.groupNameValidationBox.get('value')
         }
 
         return config;
@@ -77,13 +74,19 @@ define([
         this.groupfilterCounter++;
 
         // Let's add a validation box to receive the group filter name.
-        this.txtGroupName = new ValidationTextBox({
+        this.groupNameValidationBox = new ValidationTextBox({
           name: "txtGroupName",
           class: 'groupName-textbox',
           placeHolder: this.nls.groupNameValidationBoxHint,
           required: "true"
         });
-        domConstruct.place(this.txtGroupName.domNode, this.groupNameValidationBox);
+        domConstruct.place(this.groupNameValidationBox.domNode, this.groupNameValidationBoxNode);
+
+        // If we were given parameters, let's assign them to the group filter.
+        if ( this.parameters ) {
+          this.groupNameValidationBox.set('value', this.parameters.groupName)
+        }
+
 
         // Let's create a way for the user to delete a group filter.
         var deleteGroupBlock = domConstruct.create("div", {
