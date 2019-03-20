@@ -70,7 +70,6 @@ define([
       },
 
       createGroupBlock: function() {
-        console.log(this.referenceToSelf)
 
         // Let's index the group filter blocks so we can reference them later.
         this.groupfilterCounter++;
