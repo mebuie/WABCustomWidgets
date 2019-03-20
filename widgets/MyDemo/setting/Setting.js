@@ -76,7 +76,11 @@ define([
       var groupFilterWidgetsNode = dom.byId('group-filter-container');
       var allGroupFilterWidgets = registry.findWidgets(groupFilterWidgetsNode);
       console.log(allGroupFilterWidgets);
-      // TODO: Can't store widgets in json file, need to extract parameters. 
+      // TODO: Can't store widgets in json file, need to extract parameters.
+
+      array.forEach( allGroupFilterWidgets, lang.hitch(this, function( group ) {
+        console.log(group.getConfig())
+      }));
 
       return this.config
     },
@@ -91,9 +95,10 @@ define([
 
     createGroupBlock: function () {
       this.groupFilterCounter++
+      var id = "filterGroup_" + this.groupFilterCounter;
 
       var filterGroup = new GroupFilter({
-        id: "filterGroup_" + this.groupFilterCounter,
+        id: id,
         nls: this.nls
       });
       filterGroup.placeAt(this.groupFilter);

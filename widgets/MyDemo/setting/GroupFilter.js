@@ -38,6 +38,7 @@ define([
       // Options
       map: null,
       nls: null,
+      parameters: [],
 
       // postMixInProperties: function() {
       //   this.nls = lang.mixin(this.nls, window.jimuNls.common);
@@ -45,8 +46,7 @@ define([
       // },
 
       postCreate: function(){
-        // the config objects are passed in
-        this.setConfig(this.config);
+        console.log("GroupFilter postCreate")
 
         // do other stuff here.
       },
@@ -57,16 +57,18 @@ define([
 
 
       setConfig: function(config){
-        // assigns the config.json values to elements.
-        // this.textNode.value = config.inputText;
+        console.log("GroupFilter setConfig")
       },
 
       getConfig: function(){
-        // Returns a new config object with updated values, when the user selects OK on setting screen.
-        // console.log(this.textNode.value)
-        // return {
-        //   inputText: this.textNode.value
-        // };
+        console.log("GroupFilter getConfig")
+
+        var config = {
+          groupId: this.id,
+          groupName: this.txtGroupName.get('value')
+        }
+
+        return config;
       },
 
       createGroupBlock: function() {
@@ -74,14 +76,14 @@ define([
         // Let's index the group filter blocks so we can reference them later.
         this.groupfilterCounter++;
 
-        // Let's add a validation box to recieve the group filter name.
-        var txtGroupName = new ValidationTextBox({
+        // Let's add a validation box to receive the group filter name.
+        this.txtGroupName = new ValidationTextBox({
           name: "txtGroupName",
           class: 'groupName-textbox',
           placeHolder: this.nls.groupNameValidationBoxHint,
           required: "true"
         });
-        domConstruct.place(txtGroupName.domNode, this.groupNameValidationBox);
+        domConstruct.place(this.txtGroupName.domNode, this.groupNameValidationBox);
 
         // Let's create a way for the user to delete a group filter.
         var deleteGroupBlock = domConstruct.create("div", {
@@ -94,6 +96,7 @@ define([
           this.destroy();
         }));
         domConstruct.place(deleteGroupBlock, this.groupBlockDelete)
+
       }
     });
   });
