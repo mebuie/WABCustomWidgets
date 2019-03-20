@@ -7,7 +7,16 @@
             <div class="left" style="margin-top:3px;">${nls.groupName}:</div>
             <div data-dojo-attach-point="groupNameValidationBoxNode"></div>
 
-            <div class="group-block-delete-btn-container" data-dojo-attach-point="groupBlockDelete"></div>
+            <div class="group-block-delete-btn-container" data-dojo-attach-point="groupBlockDelete">
+
+            <div class="add-filter-button-container jimu-not-selectable">
+                <div class="add-filter-button" data-dojo-attach-event="click:_onBtnAddGroupClicked">
+                    <div class="icon"></div>
+                    <div class="tip">${nls.newFilter}</div>
+                </div>
+            </div>
+
+            </div>
 
         </div>
 

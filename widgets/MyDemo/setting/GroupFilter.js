@@ -100,6 +100,11 @@ define([
         }));
         domConstruct.place(deleteGroupBlock, this.groupBlockDelete)
 
+      },
+
+      _onBtnAddGroupClicked: function() {
+        console.log("boop")
       }
+
     });
   });
