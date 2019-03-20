@@ -122,6 +122,5 @@ define([
       filterGroup.placeAt(this.groupFilter);
     }
 
-
   });
 });
