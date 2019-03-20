@@ -22,6 +22,7 @@
 
 define([
     'dojo/on',
+    'dojo/dom',
     'dojo/dom-construct',
     'dojo/dom-class',
     'dojo/query',
@@ -30,6 +31,7 @@ define([
     'dojo/_base/array',
     'dojo/_base/declare',
     'dijit/_WidgetsInTemplateMixin',
+    'dijit/registry',
     'esri/lang',
     'jimu/utils',
     'jimu/BaseWidgetSetting',
@@ -40,7 +42,7 @@ define([
     'jimu/dijit/CheckBox',
     'jimu/dijit/LoadingShelter'
   ],
-  function(on, domConstruct, domClass, query, html, lang, array, declare, _WidgetsInTemplateMixin, esriLang, jimuUtils,
+  function(on, dom, domConstruct, domClass, query, html, lang, array, declare, _WidgetsInTemplateMixin, registry, esriLang, jimuUtils,
            BaseWidgetSetting, GroupFilter, LayerInfos, CustomFeaturelayerChooserFromMap, LayerChooserFromMapWithDropbox ) {
 
   return declare([BaseWidgetSetting, _WidgetsInTemplateMixin], {
@@ -60,6 +62,7 @@ define([
       if (this.config.groups.length > 0) {
         // Load parameters here.
         // TODO: for each group filter, recreate the group filter.
+        console.log(this.config.groups)
       } else {
         return false
       }
@@ -68,6 +71,13 @@ define([
 
     getConfig: function(){
       // When the user is done configuring the widget, pass any widget parameters to config.json
+
+      // Let's grab all the GroupFilter widgets that the user created.
+      var groupFilterWidgetsNode = dom.byId('group-filter-container');
+      var allGroupFilterWidgets = registry.findWidgets(groupFilterWidgetsNode);
+      console.log(allGroupFilterWidgets);
+      // TODO: Can't store widgets in json file, need to extract parameters. 
+
       return this.config
     },
 
