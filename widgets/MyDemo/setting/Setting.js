@@ -68,14 +68,7 @@ define([
 
     getConfig: function(){
       // When the user is done configuring the widget, pass any widget parameters to config.json
-      if (this.config.groups.length > 0) {
-        console.log(this.config)
-        return this.config
-      } else {
-        return false
-      }
-
-
+      return this.config
     },
 
     //*************************************************   BEGIN WIDGET METHODS   ***************************************
