@@ -75,7 +75,7 @@ define([
         }));
 
       } else {
-        // No perssistent group filters need to be created, so let's create an initial one on startup.
+        // No persistent group filters need to be created, so let's create an initial one on startup.
         this.createGroupBlock();
       }
 
