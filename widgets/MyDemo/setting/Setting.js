@@ -49,24 +49,32 @@ define([
     groupFilterCounter: 0,
 
     postCreate: function(){
-      // the config objects are passed in
+      // the config objects are passed in from config.json
       this.setConfig(this.config);
 
       // do other stuff here.
     },
 
-
     setConfig: function(config){
-      // assigns the config.json values to elements.
-      // this.textNode.value = config.inputText;
+      this.config = config;
+      if (this.config.groups.length > 0) {
+        // Load parameters here.
+        // TODO: for each group filter, recreate the group filter.
+      } else {
+        return false
+      }
+
     },
 
     getConfig: function(){
-      // Returns a new config object with updated values, when the user selects OK on setting screen.
-      // console.log(this.textNode.value)
-      // return {
-      //   inputText: this.textNode.value
-      // };
+      // When the user is done configuring the widget, pass any widget parameters to config.json
+      if (this.config.groups.length > 0) {
+        console.log(this.config)
+        return this.config
+      } else {
+        return false
+      }
+
 
     },
 
