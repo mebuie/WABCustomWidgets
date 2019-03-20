@@ -59,12 +59,15 @@ define([
 
     setConfig: function(config){
       this.config = config;
+
       if (this.config.groups.length > 0) {
         // Load parameters here.
         // TODO: for each group filter, recreate the group filter.
         console.log(this.config.groups)
       } else {
+
         return false
+        
       }
 
     },
@@ -72,14 +75,16 @@ define([
     getConfig: function(){
       // When the user is done configuring the widget, pass any widget parameters to config.json
 
+      // Let's clear out any filter groups that may exist.
+      this.config.groups = [];
+
       // Let's grab all the GroupFilter widgets that the user created.
       var groupFilterWidgetsNode = dom.byId('group-filter-container');
       var allGroupFilterWidgets = registry.findWidgets(groupFilterWidgetsNode);
-      console.log(allGroupFilterWidgets);
-      // TODO: Can't store widgets in json file, need to extract parameters.
 
+      // For each GroupFilter widget, lets pass the parameters to config.json so we can recreate it later.
       array.forEach( allGroupFilterWidgets, lang.hitch(this, function( group ) {
-        console.log(group.getConfig())
+        this.config.groups.push( group.getConfig() )
       }));
 
       return this.config
@@ -95,6 +100,7 @@ define([
 
     createGroupBlock: function () {
       this.groupFilterCounter++
+
       var id = "filterGroup_" + this.groupFilterCounter;
 
       var filterGroup = new GroupFilter({
