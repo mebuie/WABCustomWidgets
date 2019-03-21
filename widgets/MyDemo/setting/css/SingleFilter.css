@@ -1,0 +1,24 @@
+.jimu-widget-singlefilter-setting {
+    background-color: #FFFFFF;
+    border-color: #e1e1e1;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    text-align: left;
+    position: relative;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.jimu-widget-singlefilter-setting .filter-layer {
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.jimu-widget-groupfilter-setting .jimu-layer-chooser-from-map-withdropbox{
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

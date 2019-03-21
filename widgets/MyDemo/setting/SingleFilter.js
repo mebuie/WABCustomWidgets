@@ -62,9 +62,14 @@ define([
 
       createLayerFilter: function() {
 
-        // Let's create a layer chooser drop down box. 
+        // Let's create a layer chooser drop down box.
         var layerChooser = new LayerChooserFromMap({
-          createMapResponse: this.map.webMapResponse
+          createMapResponse: this.map.webMapResponse,
+          multiple: false, //Can select multiple layers or a single layer.
+          onlyShowVisible: false,
+          updateWhenLayerInfosIsShowInMapChanged: false,
+          onlyShowWebMapLayers: false,
+          displayTooltipForTreeNode: false
         });
         var layerChooserSelect = new LayerChooserFromMapWithDropbox({
           layerChooser: layerChooser
