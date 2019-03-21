@@ -19,6 +19,7 @@ define([
     'jimu/BaseWidgetSetting',
     'jimu/LayerInfos/LayerInfos',
     '../CustomFeaturelayerChooserFromMap',
+    'jimu/dijit/LayerChooserFromMap',
     'jimu/dijit/LayerChooserFromMapWithDropbox',
     'jimu/dijit/CheckBox',
     'jimu/dijit/LoadingShelter'
@@ -26,7 +27,7 @@ define([
   function(on, domConstruct, domClass, query, html, template, lang, array, declare, _WidgetBase, _TemplatedMixin,
            _WidgetsInTemplateMixin, esriLang, jimuUtils,
            TextBox, ValidationTextBox, CheckBox, BaseWidgetSetting, LayerInfos,
-           CustomFeaturelayerChooserFromMap, LayerChooserFromMapWithDropbox ) {
+           CustomFeaturelayerChooserFromMap, LayerChooserFromMap, LayerChooserFromMapWithDropbox ) {
 
     return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
       baseClass: 'jimu-widget-singlefilter-setting',
@@ -35,34 +36,40 @@ define([
       // Options
       map: null,
       nls: null,
+      parameters: null,
+
+      postMixInProperties:function(){
+        this.inherited(arguments);
+      },
 
       postCreate: function(){
-        // the config objects are passed in
-        this.setConfig(this.config);
+        this.createLayerFilter();
 
-        // do other stuff here.
       },
 
       startup: function() {
-        this.createFilterBlock();
+
       },
 
 
       setConfig: function(config){
-        // assigns the config.json values to elements.
-        // this.textNode.value = config.inputText;
+
       },
 
-      getConfig: function(){
-        // Returns a new config object with updated values, when the user selects OK on setting screen.
-        // console.log(this.textNode.value)
-        // return {
-        //   inputText: this.textNode.value
-        // };
+      getConfig: function() {
+
       },
 
-      createFilterBlock: function() {
+      createLayerFilter: function() {
 
+        // Let's create a layer chooser drop down box. 
+        var layerChooser = new LayerChooserFromMap({
+          createMapResponse: this.map.webMapResponse
+        });
+        var layerChooserSelect = new LayerChooserFromMapWithDropbox({
+          layerChooser: layerChooser
+        });
+        layerChooserSelect.placeAt(this.layerChooserNode);
       }
     });
   });

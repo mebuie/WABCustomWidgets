@@ -38,17 +38,22 @@ define([
     './GroupFilter',
     'jimu/LayerInfos/LayerInfos',
     '../CustomFeaturelayerChooserFromMap',
+    'jimu/dijit/LayerChooserFromMap',
     'jimu/dijit/LayerChooserFromMapWithDropbox',
     'jimu/dijit/CheckBox',
     'jimu/dijit/LoadingShelter'
   ],
   function(on, dom, domConstruct, domClass, query, html, lang, array, declare, _WidgetsInTemplateMixin, registry, esriLang, jimuUtils,
-           BaseWidgetSetting, GroupFilter, LayerInfos, CustomFeaturelayerChooserFromMap, LayerChooserFromMapWithDropbox ) {
+           BaseWidgetSetting, GroupFilter, LayerInfos, CustomFeaturelayerChooserFromMap, LayerChooserFromMap, LayerChooserFromMapWithDropbox ) {
 
   return declare([BaseWidgetSetting, _WidgetsInTemplateMixin], {
     baseClass: 'jimu-widget-mydemo-setting',
 
     groupFilterCounter: 0,
+
+    postMixInProperties:function(){
+      this.inherited(arguments);
+    },
 
     postCreate: function(){
       // the config objects are passed in from config.json
@@ -116,6 +121,7 @@ define([
 
       var filterGroup = new GroupFilter({
         id: id,
+        map: this.map,
         nls: this.nls,
         parameters: parameters
       });

@@ -19,6 +19,7 @@ define([
     'dijit/form/CheckBox',
     'jimu/BaseWidgetSetting',
     'jimu/LayerInfos/LayerInfos',
+    './SingleFilter',
     '../CustomFeaturelayerChooserFromMap',
     'jimu/dijit/LayerChooserFromMapWithDropbox',
     'jimu/dijit/CheckBox',
@@ -26,14 +27,14 @@ define([
   ],
   function(on, dom, domConstruct, domClass, query, html, template, lang, array, declare, _WidgetBase, _TemplatedMixin,
            _WidgetsInTemplateMixin, esriLang, jimuUtils,
-           TextBox, ValidationTextBox, CheckBox, BaseWidgetSetting, LayerInfos,
+           TextBox, ValidationTextBox, CheckBox, BaseWidgetSetting, LayerInfos, SingleFilter,
            CustomFeaturelayerChooserFromMap, LayerChooserFromMapWithDropbox ) {
 
     return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
       baseClass: 'jimu-widget-groupfilter-setting',
       templateString: template,
 
-      groupfilterCounter: 0,
+      filterCounter: 0,
 
       // Options
       map: null,
@@ -44,6 +45,10 @@ define([
       //   this.nls = lang.mixin(this.nls, window.jimuNls.common);
       //   this.nls = lang.mixin(this.nls, window.jimuNls.spatialFilterByFeatures);
       // },
+
+      postMixInProperties:function(){
+        this.inherited(arguments);
+      },
 
       postCreate: function(){
         console.log("GroupFilter postCreate")
@@ -102,9 +107,21 @@ define([
 
       },
 
-      _onBtnAddGroupClicked: function() {
-        console.log("boop")
+      _onBtnAddGroupClicked: function(parameters) {
+        parameters = parameters || null;
+
+        this.filterCounter++
+        var id = this.id + "_filterLayer_" + this.filterCounter;
+
+        var filter = new SingleFilter({
+          id: id,
+          map: this.map,
+          nls: this.nls,
+          parameters: parameters
+        });
+        filter.placeAt(this.layerFilterNode);
       }
+
 
     });
   });
