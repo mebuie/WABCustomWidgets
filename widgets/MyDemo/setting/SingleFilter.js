@@ -58,6 +58,18 @@ define([
 
       getConfig: function() {
 
+        // Packed all the user defined parameters and return them as a config object.
+        if ( this.layerChooserSelect ) {
+          var layerObject = this.layerChooserSelect.getSelectedItem()
+          var config = {
+            filterId: this.id,
+            id: layerObject.layerInfo.id
+          }
+          return config;
+        } else {
+          return null;
+        }
+
       },
 
       createLayerFilter: function() {
@@ -71,10 +83,11 @@ define([
           onlyShowWebMapLayers: false,
           displayTooltipForTreeNode: false
         });
-        var layerChooserSelect = new LayerChooserFromMapWithDropbox({
+        this.layerChooserSelect = new LayerChooserFromMapWithDropbox({
           layerChooser: layerChooser
         });
-        layerChooserSelect.placeAt(this.layerChooserNode);
+        this.layerChooserSelect.placeAt(this.layerChooserNode);
+
       }
     });
   });

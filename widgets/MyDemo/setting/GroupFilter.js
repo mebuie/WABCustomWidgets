@@ -12,6 +12,7 @@ define([
     'dijit/_WidgetBase',
     'dijit/_TemplatedMixin',
     'dijit/_WidgetsInTemplateMixin',
+    'dijit/registry',
     'esri/lang',
     'jimu/utils',
     'dijit/form/TextBox',
@@ -26,7 +27,7 @@ define([
     'jimu/dijit/LoadingShelter'
   ],
   function(on, dom, domConstruct, domClass, query, html, template, lang, array, declare, _WidgetBase, _TemplatedMixin,
-           _WidgetsInTemplateMixin, esriLang, jimuUtils,
+           _WidgetsInTemplateMixin, registry, esriLang, jimuUtils,
            TextBox, ValidationTextBox, CheckBox, BaseWidgetSetting, LayerInfos, SingleFilter,
            CustomFeaturelayerChooserFromMap, LayerChooserFromMapWithDropbox ) {
 
@@ -64,10 +65,23 @@ define([
       getConfig: function(){
         console.log("GroupFilter getConfig")
 
+        // Empty array to store layer filter parameters before passing them to config object.
+        var layerFilters = [];
+
+        // Let's grab all the SingleFilter widgets that the user created.
+        var filterWidgetsNode = dom.byId('filter-container');
+        var allFilterWidgets = registry.findWidgets(filterWidgetsNode);
+
+        // For each SingleFilter widget, lets pass the parameters to layerFilters so we can recreate it later.
+        array.forEach(allFilterWidgets, lang.hitch(this, function ( filter ) {
+          layerFilters.push( filter.getConfig() )
+        }));
+
         // Let's create a config file to store the parameters of the group filter.
         var config = {
           groupId: this.id,
-          groupName: this.groupNameValidationBox.get('value')
+          groupName: this.groupNameValidationBox.get('value'),
+          layerFilters: layerFilters
         }
 
         return config;
