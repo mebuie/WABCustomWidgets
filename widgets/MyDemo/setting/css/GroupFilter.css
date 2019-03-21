@@ -4,10 +4,10 @@
     border-style: solid;
     border-width: 2px;
     border-radius: 5px;
-    width: 100%;
     text-align: left;
     position: relative;
     margin-top: 10px;
+    margin-right: 10px;
 }
 
 .jimu-widget-groupfilter-setting .group-container {
