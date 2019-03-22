@@ -92,6 +92,18 @@ define([
           this.layerChooserSelect.setSelectedLayer( this.parameters )
         }
 
+        // Let's create a way for the user to delete a layer filter.
+        var deleteFilter = domConstruct.create("div", {
+          id: 'filter_' + this.groupfilterCounter,
+          class: 'filter-delete-button'
+        });
+        var deleteFilterAction = on(deleteFilter, "click", lang.hitch(this, function() {
+          console.log("delete")
+          deleteFilterAction.remove();
+          this.destroy();
+        }));
+        domConstruct.place(deleteFilter, this.filterDeleteNode)
+
       }
     });
   });
