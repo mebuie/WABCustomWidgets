@@ -10,6 +10,18 @@
     margin-right: 10px;
 }
 
+.jimu-widget-groupfilter-setting #filter-container {
+    background-color: #e1e1e1;
+    border-color: #e1e1e1;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    text-align: left;
+    position: relative;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
 .jimu-widget-groupfilter-setting .group-container {
     margin-left: 10px;
 }
