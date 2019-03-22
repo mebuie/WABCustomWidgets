@@ -38,27 +38,19 @@ define([
       nls: null,
       parameters: null,
 
+
       postMixInProperties:function(){
         this.inherited(arguments);
       },
 
+
       postCreate: function(){
         this.createLayerFilter();
-
       },
 
-      startup: function() {
-
-      },
-
-
-      setConfig: function(config){
-
-      },
 
       getConfig: function() {
         // Pack all the user defined parameters and return them as a config object.
-
         this.layerObject = this.layerChooserSelect.getSelectedItem()
         if ( this.layerObject && this.layerObject.layerInfo.id ) {
           this.config = {
@@ -69,11 +61,10 @@ define([
         } else {
           return null;
         }
-
       },
 
-      createLayerFilter: function() {
 
+      createLayerFilter: function() {
         // Let's create a layer chooser drop down box.
         var layerChooser = new LayerChooserFromMap({
           createMapResponse: this.map.webMapResponse,
@@ -88,6 +79,7 @@ define([
         });
         this.layerChooserSelect.placeAt(this.layerChooserNode);
 
+        // If we were given parameters, let's assign them to the layer filter.
         if ( this.parameters ) {
           this.layerChooserSelect.setSelectedLayer( this.parameters )
         }
@@ -103,7 +95,7 @@ define([
           this.destroy();
         }));
         domConstruct.place(deleteFilter, this.filterDeleteNode)
-
       }
+
     });
   });

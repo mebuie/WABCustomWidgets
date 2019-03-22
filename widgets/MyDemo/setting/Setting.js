@@ -51,37 +51,32 @@ define([
 
     groupFilterCounter: 0,
 
+
     postMixInProperties:function(){
       this.inherited(arguments);
     },
 
+
     postCreate: function(){
       // the config objects are passed in from config.json
       this.setConfig(this.config);
-
-      // do other stuff here.
-    },
-
-    onOpen: function() {
-      console.log("MyDemo Fired")
     },
 
 
     setConfig: function(config){
       this.config = config;
 
+      // If there are any filter groups in the config, let's recreate the filter group.
       if (this.config.groups.length > 0) {
-
         array.forEach( this.config.groups, lang.hitch(this, function ( group ) {
           this.createGroupBlock( group )
         }));
-
       } else {
         // No persistent group filters need to be created, so let's create an initial one on startup.
         this.createGroupBlock();
       }
-
     },
+
 
     getConfig: function(){
       // When the user is done configuring the widget, pass any widget parameters to config.json
@@ -101,13 +96,11 @@ define([
       return this.config
     },
 
-    //*************************************************   BEGIN WIDGET METHODS   ***************************************
 
     _onBtnAddGroupClicked: function() {
-
       this.createGroupBlock();
-
     },
+
 
     createGroupBlock: function (parameters) {
       parameters = parameters || null;

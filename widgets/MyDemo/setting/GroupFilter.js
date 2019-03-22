@@ -42,40 +42,34 @@ define([
       nls: null,
       parameters: null,
 
-      // postMixInProperties: function() {
-      //   this.nls = lang.mixin(this.nls, window.jimuNls.common);
-      //   this.nls = lang.mixin(this.nls, window.jimuNls.spatialFilterByFeatures);
-      // },
 
       postMixInProperties:function(){
         this.inherited(arguments);
       },
 
+
       postCreate: function(){
         // Let's create the block group.
         this.createGroupBlock();
 
-        // If widget parameters exist, we may need to recreate previously input filters.
+        // If widget parameters exist, we may need to recreate previously input layer filters.
         if (this.parameters) {
           this.setConfig(this.parameters);
         }
       },
 
+
       setConfig: function( parameters ){
         // If there are any layerFilters in the parameters object, let's recreate the layer filters.
         if ( parameters.layerFilters && parameters.layerFilters.length > 0 ) {
           array.forEach( parameters.layerFilters, lang.hitch(this, function( layerFilter ) {
-            // TODO: Only create if it has an id.
             this.createLayerFilter( layerFilter )
           }));
-
         }
-
       },
 
-      getConfig: function(){
-        console.log("GroupFilter getConfig")
 
+      getConfig: function(){
         // Empty array to store layer filter parameters before passing them to config object.
         var layerFilters = [];
 
@@ -97,12 +91,11 @@ define([
           groupName: this.groupNameValidationBox.get('value'),
           layerFilters: layerFilters
         }
-
         return config;
       },
 
-      createGroupBlock: function() {
 
+      createGroupBlock: function() {
         // Let's index the group filter blocks so we can reference them later.
         this.groupfilterCounter++;
 
@@ -120,7 +113,6 @@ define([
           this.groupNameValidationBox.set('value', this.parameters.groupName)
         }
 
-
         // Let's create a way for the user to delete a group filter.
         var deleteGroupBlock = domConstruct.create("div", {
           id: 'groupDelete_' + this.groupfilterCounter,
@@ -132,12 +124,13 @@ define([
           this.destroy();
         }));
         domConstruct.place(deleteGroupBlock, this.groupBlockDelete)
-
       },
+
 
       _onBtnAddGroupClicked: function() {
         this.createLayerFilter();
       },
+
 
       createLayerFilter: function(parameters) {
         parameters = parameters || null;
@@ -153,7 +146,6 @@ define([
         });
         filter.placeAt(this.layerFilterNode);
       }
-
 
     });
   });
