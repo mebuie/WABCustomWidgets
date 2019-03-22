@@ -118,6 +118,7 @@ define([
 
       var filterGroup = new GroupFilter({
         id: id,
+        class: id,
         map: this.map,
         nls: this.nls,
         parameters: parameters

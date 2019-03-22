@@ -57,16 +57,15 @@ define([
       },
 
       getConfig: function() {
+        // Pack all the user defined parameters and return them as a config object.
 
-        // Packed all the user defined parameters and return them as a config object.
-
-        var layerObject = this.layerChooserSelect.getSelectedItem()
-        if ( layerObject && layerObject.layerInfo.id ) {
-          var config = {
+        this.layerObject = this.layerChooserSelect.getSelectedItem()
+        if ( this.layerObject && this.layerObject.layerInfo.id ) {
+          this.config = {
             filterId: this.id,
-            id: layerObject.layerInfo.id
+            id: this.layerObject.layerInfo.id
           }
-          return config;
+          return this.config;
         } else {
           return null;
         }

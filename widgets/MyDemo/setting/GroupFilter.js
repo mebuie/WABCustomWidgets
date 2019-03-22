@@ -80,8 +80,8 @@ define([
         var layerFilters = [];
 
         // Let's grab all the SingleFilter widgets that the user created.
-        var filterWidgetsNode = dom.byId('filter-container');
-        var allFilterWidgets = registry.findWidgets(filterWidgetsNode);
+        var filterWidgetsNode = query('#' + this.id + ' #filter-container'); // limit search to current filter group. 
+        var allFilterWidgets = registry.findWidgets(filterWidgetsNode[0]);
 
         // For each SingleFilter widget, lets pass the parameters to layerFilters so we can recreate it later.
         array.forEach(allFilterWidgets, lang.hitch(this, function ( filter ) {
