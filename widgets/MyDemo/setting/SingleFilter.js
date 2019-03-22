@@ -59,8 +59,9 @@ define([
       getConfig: function() {
 
         // Packed all the user defined parameters and return them as a config object.
-        if ( this.layerChooserSelect ) {
-          var layerObject = this.layerChooserSelect.getSelectedItem()
+
+        var layerObject = this.layerChooserSelect.getSelectedItem()
+        if ( layerObject && layerObject.layerInfo.id ) {
           var config = {
             filterId: this.id,
             id: layerObject.layerInfo.id
@@ -87,6 +88,10 @@ define([
           layerChooser: layerChooser
         });
         this.layerChooserSelect.placeAt(this.layerChooserNode);
+
+        if ( this.parameters ) {
+          this.layerChooserSelect.setSelectedLayer( this.parameters )
+        }
 
       }
     });

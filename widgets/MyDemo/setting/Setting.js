@@ -70,12 +70,7 @@ define([
     setConfig: function(config){
       this.config = config;
 
-      console.log(config)
-
       if (this.config.groups.length > 0) {
-        // Load parameters here.
-        // TODO: for each group filter, recreate the group filter.
-        console.log(this.config.groups)
 
         array.forEach( this.config.groups, lang.hitch(this, function ( group ) {
           this.createGroupBlock( group )

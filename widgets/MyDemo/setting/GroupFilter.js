@@ -52,14 +52,25 @@ define([
       },
 
       postCreate: function(){
-        console.log("GroupFilter postCreate")
+        // Let's create the block group.
         this.createGroupBlock();
 
-        // do other stuff here.
+        // If widget parameters exist, we may need to recreate previously input filters.
+        if (this.parameters) {
+          this.setConfig(this.parameters);
+        }
       },
 
-      setConfig: function(config){
-        console.log("GroupFilter setConfig")
+      setConfig: function( parameters ){
+        // If there are any layerFilters in the parameters object, let's recreate the layer filters.
+        if ( parameters.layerFilters && parameters.layerFilters.length > 0 ) {
+          array.forEach( parameters.layerFilters, lang.hitch(this, function( layerFilter ) {
+            // TODO: Only create if it has an id.
+            this.createLayerFilter( layerFilter )
+          }));
+
+        }
+
       },
 
       getConfig: function(){
@@ -74,6 +85,7 @@ define([
 
         // For each SingleFilter widget, lets pass the parameters to layerFilters so we can recreate it later.
         array.forEach(allFilterWidgets, lang.hitch(this, function ( filter ) {
+          // TODO: Check if null first.
           layerFilters.push( filter.getConfig() )
         }));
 
@@ -121,7 +133,11 @@ define([
 
       },
 
-      _onBtnAddGroupClicked: function(parameters) {
+      _onBtnAddGroupClicked: function() {
+        this.createLayerFilter();
+      },
+
+      createLayerFilter: function(parameters) {
         parameters = parameters || null;
 
         this.filterCounter++
