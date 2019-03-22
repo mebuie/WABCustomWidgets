@@ -80,13 +80,15 @@ define([
         var layerFilters = [];
 
         // Let's grab all the SingleFilter widgets that the user created.
-        var filterWidgetsNode = query('#' + this.id + ' #filter-container'); // limit search to current filter group. 
-        var allFilterWidgets = registry.findWidgets(filterWidgetsNode[0]);
+        var filterWidgetsNode = query('#' + this.id + ' #filter-container'); // limit search to current filter group.
+        var allFilterWidgets = registry.findWidgets( filterWidgetsNode[0] );
 
         // For each SingleFilter widget, lets pass the parameters to layerFilters so we can recreate it later.
-        array.forEach(allFilterWidgets, lang.hitch(this, function ( filter ) {
-          // TODO: Check if null first.
-          layerFilters.push( filter.getConfig() )
+        array.forEach( allFilterWidgets, lang.hitch( this, function ( filterWidget ) {
+          var filterWidgetConfig = filterWidget.getConfig();
+          if ( filterWidgetConfig ) {
+            layerFilters.push( filterWidgetConfig )
+          }
         }));
 
         // Let's create a config file to store the parameters of the group filter.
