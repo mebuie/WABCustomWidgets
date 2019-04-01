@@ -13,6 +13,7 @@ define([
     'dijit/_WidgetsInTemplateMixin',
     'esri/lang',
     'jimu/utils',
+    'jimu/dijit/Filter',
     'dijit/form/TextBox',
     'dijit/form/ValidationTextBox',
     'dijit/form/CheckBox',
@@ -25,7 +26,7 @@ define([
     'jimu/dijit/LoadingShelter'
   ],
   function(on, domConstruct, domClass, query, html, template, lang, array, declare, _WidgetBase, _TemplatedMixin,
-           _WidgetsInTemplateMixin, esriLang, jimuUtils,
+           _WidgetsInTemplateMixin, esriLang, jimuUtils, Filter,
            TextBox, ValidationTextBox, CheckBox, BaseWidgetSetting, LayerInfos,
            CustomFeaturelayerChooserFromMap, LayerChooserFromMap, LayerChooserFromMapWithDropbox ) {
 
@@ -101,9 +102,22 @@ define([
       },
 
       createLayerExpression: function() {
-        if ( this.layerChooserSelect && this.layerChooserSelect.getSelectedItem() ) {
-          console.log(this.layerChooserSelect.getSelectedItem())
+        // Get the selected layer in the dropdown box.
+        var selectedLayer = this.layerChooserSelect.getSelectedItem()
+
+        // If the layer has layerInfo, create an expression widget.
+        if ( selectedLayer.layerInfo ) {
+          var layerInfo = selectedLayer.layerInfo
+          var layer = layerInfo.layerObject
+
+          this.filter = new Filter({
+            enableAskForValues: true,
+            featureLayerId: layer.id
+          });
+          this.filter.buildByExpr(layer.url, "1=1", layer)
+          this.filter.placeAt(this.layerFilterNode)
         }
+
       }
 
     });
