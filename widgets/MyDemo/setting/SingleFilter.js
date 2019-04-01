@@ -56,7 +56,8 @@ define([
         if ( this.layerObject && this.layerObject.layerInfo.id ) {
           this.config = {
             filterId: this.id,
-            id: this.layerObject.layerInfo.id
+            id: this.layerObject.layerInfo.id,
+            partsObj: this.filter.toJson()
           }
           return this.config;
         } else {
@@ -103,7 +104,7 @@ define([
 
       createLayerExpression: function() {
 
-        // Let's get rid of any filters that may exist. 
+        // Let's get rid of any filters that may exist.
         if ( this.filter ) {
           this.filter.destroy();
         }
