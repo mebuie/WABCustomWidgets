@@ -105,19 +105,30 @@ define([
         // Get the selected layer in the dropdown box.
         var selectedLayer = this.layerChooserSelect.getSelectedItem()
 
-        // If the layer has layerInfo, create an expression widget.
+        // If the layer has layerInfo, create the jimu/Filter widget.
         if ( selectedLayer.layerInfo ) {
           var layerInfo = selectedLayer.layerInfo
           var layer = layerInfo.layerObject
 
           this.filter = new Filter({
-            enableAskForValues: true,
-            featureLayerId: layer.id
+            enableAskForValues: true
           });
-          this.filter.buildByExpr(layer.url, "1=1", layer)
+
+          /*
+          options.url: required,
+          options.partsObj: {logicalOperator,parts,expr}
+          options.expr: sql expression
+          options.partsObj or options.expr is required. options.partsObj has priority.
+          options.layerDefinition: optional
+          options.featureLayerId: optional
+          */
+          this.filter.build({
+            url: layer.url,
+            expr: '1=1',
+            featureLayerId: layer.id
+          })
           this.filter.placeAt(this.layerFilterNode)
         }
-
       }
 
     });
