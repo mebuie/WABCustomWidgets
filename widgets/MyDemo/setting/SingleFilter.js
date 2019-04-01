@@ -84,6 +84,9 @@ define([
           this.layerChooserSelect.setSelectedLayer( this.parameters )
         }
 
+        // TODO: Create a filter expression widget if the layer changes.
+        on( this.layerChooserSelect, 'selection-change', lang.hitch(this, this.createLayerExpression))
+
         // Let's create a way for the user to delete a layer filter.
         var deleteFilter = domConstruct.create("div", {
           id: 'filter_' + this.groupfilterCounter,
@@ -95,6 +98,12 @@ define([
           this.destroy();
         }));
         domConstruct.place(deleteFilter, this.filterDeleteNode)
+      },
+
+      createLayerExpression: function() {
+        if ( this.layerChooserSelect && this.layerChooserSelect.getSelectedItem() ) {
+          console.log(this.layerChooserSelect.getSelectedItem())
+        }
       }
 
     });
