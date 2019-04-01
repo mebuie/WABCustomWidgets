@@ -102,6 +102,12 @@ define([
       },
 
       createLayerExpression: function() {
+
+        // Let's get rid of any filters that may exist. 
+        if ( this.filter ) {
+          this.filter.destroy();
+        }
+
         // Get the selected layer in the dropdown box.
         var selectedLayer = this.layerChooserSelect.getSelectedItem()
 
