@@ -47,11 +47,25 @@ define([
 
       postCreate: function(){
         this.createLayerFilter();
+
+        // If widget parameters exist, we may need to recreate previously input jimu/Filters.
+        if ( this.parameters ) {
+          this.setConfig( this.parameters )
+        }
+      },
+
+
+      setConfig: function( parameters ){
+        // If there are any partsObj in the parameters object, let's recreate the jimu/Filter.
+        // If there is parameters.id but no partsObj, the user has already selected a layer, but with no expression.
+        if ( parameters.partsObj || parameters.id) {
+          this.createLayerExpression( parameters.partsObj );
+        }
       },
 
 
       getConfig: function() {
-        // Pack all the user defined parameters and return them as a config object.
+        // Create a config object to store persistent user settings.
         this.layerObject = this.layerChooserSelect.getSelectedItem()
         if ( this.layerObject && this.layerObject.layerInfo.id ) {
           this.config = {
@@ -86,8 +100,10 @@ define([
           this.layerChooserSelect.setSelectedLayer( this.parameters )
         }
 
-        // TODO: Create a filter expression widget if the layer changes.
-        on( this.layerChooserSelect, 'selection-change', lang.hitch(this, this.createLayerExpression))
+        // If the user selects a new layer, update the jimu/Filter.
+        on( this.layerChooserSelect, 'selection-change', lang.hitch(this, function() {
+          this.createLayerExpression( null )
+        }));
 
         // Let's create a way for the user to delete a layer filter.
         var deleteFilter = domConstruct.create("div", {
@@ -95,14 +111,15 @@ define([
           class: 'filter-delete-button'
         });
         var deleteFilterAction = on(deleteFilter, "click", lang.hitch(this, function() {
-          console.log("delete")
           deleteFilterAction.remove();
           this.destroy();
         }));
         domConstruct.place(deleteFilter, this.filterDeleteNode)
       },
 
-      createLayerExpression: function() {
+
+      createLayerExpression: function( parameters ) {
+        parameters = parameters || null;
 
         // Let's get rid of any filters that may exist.
         if ( this.filter ) {
@@ -131,6 +148,7 @@ define([
           */
           this.filter.build({
             url: layer.url,
+            partsObj: parameters,
             expr: '1=1',
             featureLayerId: layer.id
           })
