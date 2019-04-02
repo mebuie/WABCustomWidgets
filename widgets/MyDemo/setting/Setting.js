@@ -134,6 +134,22 @@ define([
           this._showMessage(this.nls.errName)
           return errCount > 0
         }
+
+        //If a group filter has a name, at least one layer must be selected.
+        if ( lang.trim(group.groupName) !== "" && group.layerFilters.length === 0 ) {
+          errCount++
+          this._showMessage(this.nls.errLayer)
+          return errCount > 0
+        }
+
+        // Check for valid expression in each jimu/Filter
+        if ( array.some( group.layerFilters, lang.hitch(this, function ( filter ) {
+          return filter.id && !filter.partsObj}))) {
+          errCount++
+          this._showMessage(this.nls.errSQL)
+          return errCount > 0
+        }
+
       }));
       return errCount === 0
     },
