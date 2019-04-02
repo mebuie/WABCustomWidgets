@@ -36,6 +36,7 @@ define([
     'jimu/utils',
     'jimu/BaseWidgetSetting',
     './GroupFilter',
+    'jimu/dijit/Message',
     'jimu/LayerInfos/LayerInfos',
     '../CustomFeaturelayerChooserFromMap',
     'jimu/dijit/LayerChooserFromMap',
@@ -44,7 +45,8 @@ define([
     'jimu/dijit/LoadingShelter'
   ],
   function(on, dom, domConstruct, domClass, query, html, lang, array, declare, _WidgetsInTemplateMixin, registry, esriLang, jimuUtils,
-           BaseWidgetSetting, GroupFilter, LayerInfos, CustomFeaturelayerChooserFromMap, LayerChooserFromMap, LayerChooserFromMapWithDropbox ) {
+           BaseWidgetSetting, GroupFilter, Message,
+           LayerInfos, CustomFeaturelayerChooserFromMap, LayerChooserFromMap, LayerChooserFromMapWithDropbox ) {
 
   return declare([BaseWidgetSetting, _WidgetsInTemplateMixin], {
     baseClass: 'jimu-widget-mydemo-setting',
@@ -79,8 +81,6 @@ define([
 
 
     getConfig: function(){
-      // When the user is done configuring the widget, pass any widget parameters to config.json
-
       // Let's clear out any filter groups that may exist.
       this.config.groups = [];
 
@@ -93,7 +93,12 @@ define([
         this.config.groups.push( group.getConfig() )
       }));
 
-      return this.config
+      // Let's valid the input parameters before we close the settings page.
+      if ( !this.validate(this.config) ) {
+        return false
+      } else {
+        return this.config
+      }
     },
 
 
@@ -117,7 +122,30 @@ define([
         parameters: parameters
       });
       filterGroup.placeAt(this.groupFilter);
+    },
+
+
+    validate: function( config ) {
+      var errCount = 0;
+      array.some( config.groups, lang.hitch(this, function( group ) {
+        // Check if any group names are blank.
+        if ( lang.trim(group.groupName) === "") {
+          errCount++
+          this._showMessage(this.nls.errName)
+          return errCount > 0
+        }
+      }));
+      return errCount === 0
+    },
+
+
+    _showMessage: function ( msg ) {
+      new Message({
+        type: 'error',
+        message: msg
+      })
     }
+
 
   });
 });

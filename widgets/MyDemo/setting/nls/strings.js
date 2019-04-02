@@ -7,6 +7,7 @@ define({
     newFilter: "New Layer",
     groupName: "Filter Group Name",
     groupNameValidationBoxHint: "Give your group a name",
-    layer: "Layer"
+    layer: "Layer",
+    errName: "Please enter a name for each group filter."
   })
 });
