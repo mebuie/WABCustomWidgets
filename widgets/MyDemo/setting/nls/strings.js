@@ -8,6 +8,8 @@ define({
     groupName: "Filter Group Name",
     groupNameValidationBoxHint: "Give your group a name",
     layer: "Layer",
-    errName: "Please enter a name for each group filter."
+    errName: "Please enter a name for each group filter.",
+    errLayer: "Please select at least one layer",
+    errSQL: "Please enter a valid expression."
   })
 });
