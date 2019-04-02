@@ -94,7 +94,7 @@ define([
       }));
 
       // Let's valid the input parameters before we close the settings page.
-      if ( !this.validate(this.config) ) {
+      if ( !this._validate(this.config) ) {
         return false
       } else {
         return this.config
@@ -125,7 +125,7 @@ define([
     },
 
 
-    validate: function( config ) {
+    _validate: function(config ) {
       var errCount = 0;
       array.some( config.groups, lang.hitch(this, function( group ) {
         // Check if any group names are blank.
