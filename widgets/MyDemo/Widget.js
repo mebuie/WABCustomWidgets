@@ -18,51 +18,53 @@
 // This file has been modified from the Filter widget by Mark Buie to add support
 // for group filtering.
 ///////////////////////////////////////////////////////////////////////////
-
+var test;
 define([
   'dijit/_WidgetsInTemplateMixin',
+  'dojo/_base/array',
   'dojo/_base/declare',
-  'jimu/BaseWidget'],
+  'dojo/_base/lang',
+  'jimu/BaseWidget',
+  'jimu/FilterManager',
+  'jimu/LayerStructure'],
 function(
   _WidgetsInTemplateMixin,
+  array,
   declare,
-  BaseWidget) {
+  lang,
+  BaseWidget,
+  FilterManager,
+  LayerStructure) {
 
   return declare([_WidgetsInTemplateMixin, BaseWidget], {
     baseClass: 'jimu-widget-mydemo',
 
     postCreate: function() {
       this.inherited(arguments);
-      console.log('postCreate');
+      this.layerStructure = LayerStructure.getInstance();
+      this.filterManager = FilterManager.getInstance();
+
+      if ( this.config.groups ) {
+        array.forEach( this.config.groups, lang.hitch( this, function ( group ) {
+          this._initFilters( group );
+        }));
+      }
+
+
+      // this.layerStructure.traversal( function( layerNode ) {
+      //   for( var i = 0; i < layerNode.getNodeLevel(); i++) {
+      //     console.log(layerNode)
+      //   }
+      // })
     },
 
     startup: function() {
       console.log('startup');
     },
 
-    onOpen: function(){
-      console.log('onOpen');
-    },
+    _initFilters: function( filter ) {
+      console.log(filter)
 
-    onClose: function(){
-      console.log('onClose');
-    },
-
-    onMinimize: function(){
-      console.log('onMinimize');
-    },
-
-    onMaximize: function(){
-      console.log('onMaximize');
-    },
-
-    onSignIn: function(credential){
-      /* jshint unused:false*/
-      console.log('onSignIn');
-    },
-
-    onSignOut: function(){
-      console.log('onSignOut');
     }
 
   });
