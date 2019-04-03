@@ -44,24 +44,27 @@ function(
 
     postCreate: function() {
       this.inherited(arguments);
-      this.layerStructure = LayerStructure.getInstance();
-      this.filterManager = FilterManager.getInstance();
 
+
+      // Config architecture:
+      //
+      // this.config
+      //  groups: Array
+      //   0:
+      //    groupId:
+      //    groupName:
+      //    layerFilters: Array
+      //     0:
+      //      filterId:
+      //      id:
+      //      partsObj:
+
+      // Let's create the filter groups in config.
       if ( this.config.groups ) {
         array.forEach( this.config.groups, lang.hitch( this, function ( group ) {
-          // this._initFilters( group );
-          var group = new Group({
-            nls: this.nls
-          })
-          group.placeAt(this.groupFilter)
+          this._initGroup( group )
         }));
       }
-
-      // this.layerStructure.traversal( function( layerNode ) {
-      //   for( var i = 0; i < layerNode.getNodeLevel(); i++) {
-      //     console.log(layerNode)
-      //   }
-      // })
     },
 
 
@@ -69,9 +72,14 @@ function(
       console.log('startup');
     },
 
-    _initFilters: function( filter ) {
-      console.log(filter)
 
+    _initGroup: function( group ) {
+      var group = new Group({
+        map: this.map,
+        nls: this.nls,
+        parameters: group
+      })
+      group.placeAt(this.groupFilter)
     }
 
   });
