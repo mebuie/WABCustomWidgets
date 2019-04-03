@@ -8,10 +8,6 @@
   "copyright": "Mark Buie | www.markbuie.com",
   "license": "http://www.apache.org/licenses/LICENSE-2.0",
   "properties": {
-    "keepConfigAfterMapSwitched": false,
-  },
-  "featureActions": [{
-    "name": "ShowVertex",
-    "uri": "ShowVertexFeatureAction"
-  }]
+    "keepConfigAfterMapSwitched": false
+  }
 }
