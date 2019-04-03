@@ -20,6 +20,7 @@
 ///////////////////////////////////////////////////////////////////////////
 var test;
 define([
+  './Group',
   'dijit/_WidgetsInTemplateMixin',
   'dojo/_base/array',
   'dojo/_base/declare',
@@ -28,6 +29,7 @@ define([
   'jimu/FilterManager',
   'jimu/LayerStructure'],
 function(
+  Group,
   _WidgetsInTemplateMixin,
   array,
   declare,
@@ -39,6 +41,7 @@ function(
   return declare([_WidgetsInTemplateMixin, BaseWidget], {
     baseClass: 'jimu-widget-mydemo',
 
+
     postCreate: function() {
       this.inherited(arguments);
       this.layerStructure = LayerStructure.getInstance();
@@ -46,10 +49,13 @@ function(
 
       if ( this.config.groups ) {
         array.forEach( this.config.groups, lang.hitch( this, function ( group ) {
-          this._initFilters( group );
+          // this._initFilters( group );
+          var group = new Group({
+            nls: this.nls
+          })
+          group.placeAt(this.groupFilter)
         }));
       }
-
 
       // this.layerStructure.traversal( function( layerNode ) {
       //   for( var i = 0; i < layerNode.getNodeLevel(); i++) {
@@ -57,6 +63,7 @@ function(
       //   }
       // })
     },
+
 
     startup: function() {
       console.log('startup');

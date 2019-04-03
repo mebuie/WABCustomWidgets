@@ -1,3 +1,5 @@
-.jimu-widget-mydemo div:first-child{
-  color: red;
-}
+@import url("Group.css");
+
+.jimu-widget-mydemo {
+
+ }
