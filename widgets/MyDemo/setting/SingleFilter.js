@@ -19,8 +19,7 @@ define([
     'dijit/form/CheckBox',
     'jimu/BaseWidgetSetting',
     'jimu/LayerInfos/LayerInfos',
-    '../CustomFeaturelayerChooserFromMap',
-    'jimu/dijit/LayerChooserFromMap',
+    'jimu/dijit/FeaturelayerChooserFromMap',
     'jimu/dijit/LayerChooserFromMapWithDropbox',
     'jimu/dijit/CheckBox',
     'jimu/dijit/LoadingShelter'
@@ -28,7 +27,7 @@ define([
   function(on, domConstruct, domClass, query, html, template, lang, array, declare, _WidgetBase, _TemplatedMixin,
            _WidgetsInTemplateMixin, esriLang, jimuUtils, Filter,
            TextBox, ValidationTextBox, CheckBox, BaseWidgetSetting, LayerInfos,
-           CustomFeaturelayerChooserFromMap, LayerChooserFromMap, LayerChooserFromMapWithDropbox ) {
+           FeaturelayerChooserFromMap, LayerChooserFromMapWithDropbox ) {
 
     return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
       baseClass: 'jimu-widget-singlefilter-setting',
@@ -82,12 +81,12 @@ define([
 
       createLayerFilter: function() {
         // Let's create a layer chooser drop down box.
-        var layerChooser = new LayerChooserFromMap({
+        var layerChooser = new FeaturelayerChooserFromMap({
           createMapResponse: this.map.webMapResponse,
           multiple: false, //Can select multiple layers or a single layer.
           onlyShowVisible: false,
           updateWhenLayerInfosIsShowInMapChanged: false,
-          onlyShowWebMapLayers: false,
+          onlyShowWebMapLayers: true,
           displayTooltipForTreeNode: false
         });
         this.layerChooserSelect = new LayerChooserFromMapWithDropbox({
@@ -131,6 +130,8 @@ define([
 
         // If the layer has layerInfo, create the jimu/Filter widget.
         if ( selectedLayer.layerInfo ) {
+          // TODO: Check if it's a 'Feature Layer'
+
           var layerInfo = selectedLayer.layerInfo
           var layer = layerInfo.layerObject
 
