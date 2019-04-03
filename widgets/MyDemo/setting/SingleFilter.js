@@ -1,33 +1,18 @@
 define([
-    'dojo/on',
-    'dojo/dom-construct',
-    'dojo/dom-class',
-    'dojo/query',
-    'dojo/_base/html',
-    'dojo/text!./SingleFilter.html',
-    'dojo/_base/lang',
-    'dojo/_base/array',
-    'dojo/_base/declare',
-    'dijit/_WidgetBase',
     'dijit/_TemplatedMixin',
+    'dijit/_WidgetBase',
     'dijit/_WidgetsInTemplateMixin',
-    'esri/lang',
-    'jimu/utils',
-    'jimu/dijit/Filter',
-    'dijit/form/TextBox',
-    'dijit/form/ValidationTextBox',
-    'dijit/form/CheckBox',
-    'jimu/BaseWidgetSetting',
-    'jimu/LayerInfos/LayerInfos',
+    'dojo/dom-construct',
+    'dojo/on',
+    'dojo/_base/lang',
+    'dojo/_base/declare',
+    'dojo/text!./SingleFilter.html',
     'jimu/dijit/FeaturelayerChooserFromMap',
-    'jimu/dijit/LayerChooserFromMapWithDropbox',
-    'jimu/dijit/CheckBox',
-    'jimu/dijit/LoadingShelter'
+    'jimu/dijit/Filter',
+    'jimu/dijit/LayerChooserFromMapWithDropbox'
   ],
-  function(on, domConstruct, domClass, query, html, template, lang, array, declare, _WidgetBase, _TemplatedMixin,
-           _WidgetsInTemplateMixin, esriLang, jimuUtils, Filter,
-           TextBox, ValidationTextBox, CheckBox, BaseWidgetSetting, LayerInfos,
-           FeaturelayerChooserFromMap, LayerChooserFromMapWithDropbox ) {
+  function(_TemplatedMixin, _WidgetBase, _WidgetsInTemplateMixin, domConstruct, on, lang,
+           declare, template, FeaturelayerChooserFromMap, Filter, LayerChooserFromMapWithDropbox ) {
 
     return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
       baseClass: 'jimu-widget-singlefilter-setting',
@@ -130,8 +115,6 @@ define([
 
         // If the layer has layerInfo, create the jimu/Filter widget.
         if ( selectedLayer.layerInfo ) {
-          // TODO: Check if it's a 'Feature Layer'
-
           var layerInfo = selectedLayer.layerInfo
           var layer = layerInfo.layerObject
 

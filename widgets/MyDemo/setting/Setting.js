@@ -16,37 +16,25 @@
 // limitations under the License.
 //
 // This file has been modified from the Filter widget by Mark Buie to add support
-// for group filtering.
+// for grouped layer filter filtering.
 ///////////////////////////////////////////////////////////////////////////
 
 
 define([
+    './GroupFilter',
+    'dijit/_WidgetsInTemplateMixin',
+    'dijit/registry',
     'dojo/on',
     'dojo/dom',
     'dojo/dom-construct',
-    'dojo/dom-class',
-    'dojo/query',
-    'dojo/_base/html',
-    'dojo/_base/lang',
     'dojo/_base/array',
     'dojo/_base/declare',
-    'dijit/_WidgetsInTemplateMixin',
-    'dijit/registry',
-    'esri/lang',
-    'jimu/utils',
+    'dojo/_base/lang',
     'jimu/BaseWidgetSetting',
-    './GroupFilter',
-    'jimu/dijit/Message',
-    'jimu/LayerInfos/LayerInfos',
-    '../CustomFeaturelayerChooserFromMap',
-    'jimu/dijit/LayerChooserFromMap',
-    'jimu/dijit/LayerChooserFromMapWithDropbox',
-    'jimu/dijit/CheckBox',
-    'jimu/dijit/LoadingShelter'
+    'jimu/dijit/Message'
   ],
-  function(on, dom, domConstruct, domClass, query, html, lang, array, declare, _WidgetsInTemplateMixin, registry, esriLang, jimuUtils,
-           BaseWidgetSetting, GroupFilter, Message,
-           LayerInfos, CustomFeaturelayerChooserFromMap, LayerChooserFromMap, LayerChooserFromMapWithDropbox ) {
+  function(GroupFilter, _WidgetsInTemplateMixin, registry, on, dom, domConstruct,
+           array, declare, lang, BaseWidgetSetting,  Message) {
 
   return declare([BaseWidgetSetting, _WidgetsInTemplateMixin], {
     baseClass: 'jimu-widget-mydemo-setting',
