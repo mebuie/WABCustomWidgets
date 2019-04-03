@@ -22,10 +22,14 @@ define([
       templateString: template,
       map: null,
       nls: null,
+      parameters: null,
 
 
       postCreate: function() {
         console.log("Group: postCreate")
+
+        this.groupName.innerHTML = this.parameters.groupName;
+
         // this.inherited(arguments);
         // this.layerStructure = LayerStructure.getInstance();
         // this.filterManager = FilterManager.getInstance();
@@ -41,6 +45,8 @@ define([
         //     console.log(layerNode)
         //   }
         // })
+
+
       },
 
 
