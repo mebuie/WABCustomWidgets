@@ -2,9 +2,6 @@
 
 /*
 !/.gitignore
-!/confi.json
-!/stemapp.iml
-!/.idea/*
 !/widgets/MyDemo/*
 !/sample-configs/*
 !/README.md
