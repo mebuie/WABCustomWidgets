@@ -26,27 +26,12 @@ define([
 
 
       postCreate: function() {
-        console.log("Group: postCreate")
+        this.inherited(arguments);
+        this.layerStructure = LayerStructure.getInstance();
+        this.filterManager = FilterManager.getInstance();
 
+        // Let's add the group filter name.
         this.groupName.innerHTML = this.parameters.groupName;
-
-        // this.inherited(arguments);
-        // this.layerStructure = LayerStructure.getInstance();
-        // this.filterManager = FilterManager.getInstance();
-        //
-        // if ( this.config.groups ) {
-        //   array.forEach( this.config.groups, lang.hitch( this, function ( group ) {
-        //     this._initFilters( group );
-        //   }));
-        // }
-
-        // this.layerStructure.traversal( function( layerNode ) {
-        //   for( var i = 0; i < layerNode.getNodeLevel(); i++) {
-        //     console.log(layerNode)
-        //   }
-        // })
-
-
       },
 
 
