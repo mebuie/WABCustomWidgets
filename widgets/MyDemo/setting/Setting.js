@@ -15,8 +15,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-// This file has been modified from the Filter widget by Mark Buie to add support
-// for grouped layer filter filtering.
+// This file was created by modifying Esri's Filter and GroupFilter widgets,
+// as well as custom code and logic by Mark Buie to add support for grouped
+// layer filter to the Filter Widget.
 ///////////////////////////////////////////////////////////////////////////
 
 
