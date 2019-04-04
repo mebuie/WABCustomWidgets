@@ -6,3 +6,5 @@
 !/sample-configs/*
 !/README.md
 !/LICENSE
+
+/widgets/MyDemo/**/*.db
