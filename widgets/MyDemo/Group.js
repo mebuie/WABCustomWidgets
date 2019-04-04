@@ -21,16 +21,18 @@
 ///////////////////////////////////////////////////////////////////////////
 
 define([
-    'dijit/_WidgetsInTemplateMixin',
-    'dojo/on',
-    'dojo/_base/array',
-    'dojo/_base/declare',
-    'dojo/_base/lang',
-    'dojo/text!./Group.html',
-    'jimu/BaseWidget',
-    'jimu/FilterManager',
-    'jimu/LayerStructure'],
-  function(
+  'dijit/_WidgetsInTemplateMixin',
+  'dojo/on',
+  'dojo/_base/array',
+  'dojo/_base/declare',
+  'dojo/_base/lang',
+  'dojo/text!./Group.html',
+  'jimu/BaseWidget',
+  'jimu/FilterManager',
+  'jimu/LayerStructure',
+  'jimu/dijit/ToggleButton'
+
+  ],  function(
     _WidgetsInTemplateMixin,
     on,
     array,
@@ -39,7 +41,8 @@ define([
     template,
     BaseWidget,
     FilterManager,
-    LayerStructure) {
+    LayerStructure,
+    ToggleButton) {
 
     return declare([_WidgetsInTemplateMixin, BaseWidget], {
       baseClass: 'jimu-widget-group',
@@ -59,6 +62,11 @@ define([
 
         // Let's add the group filter name.
         this.groupName.innerHTML = this.name;
+
+        // Let's add a toggle button for the filter.
+        this.toggleButton = new ToggleButton({}, this.filterButton)
+        this.toggleButton.startup();
+        this.toggleButton.setValue(false);
       },
 
 
@@ -79,14 +87,14 @@ define([
       setMultiFilter: function( parentId, reset ) {
         array.forEach(this.layerFilters, lang.hitch( this, function( layerFilter ){
           var layer = this.layerStructure.getNodeById( layerFilter.id );
+
           var expr = ""
 
-          if ( !reset ) {
+          // Let's determine whether the filter needs to be applied or removed.
+          if ( !this.isFilterSet ) {
             expr = layerFilter.partsObj.expr
-            this.isFilterSet = true;
           } else {
             expr = ""
-            this.isFilterSet = false;
           }
 
           // @param  {[string]} layerId       [the layer id]
@@ -97,6 +105,15 @@ define([
           // @param  {[type]} zoomAfterFilter [true/false or null or undefined]
           this.filterManager.applyWidgetFilter( layer.id, parentId, expr, true, false, true )
         }));
+
+        if ( !this.isFilterSet ) {
+          this.isFilterSet = true;
+          this.toggleButton.setValue(true);
+        } else {
+          this.isFilterSet = false;
+          this.toggleButton.setValue(false);
+        }
+
       }
 
     });

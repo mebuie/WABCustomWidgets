@@ -1,11 +1,12 @@
 .jimu-widget-group {
+    position: relative;
     background-color: #FFFFFF;
     border-color: #e1e1e1;
     border-style: solid;
     border-width: 2px;
     border-radius: 5px;
-    font-size: 16px;
-    font-family: "Avenir Medium";
+    font-size: 12px;
+    font-family: 'Avenir Light', Verdana, Geneva, sans-serif;
     margin-bottom: 5px;
     cursor: pointer;
 }
@@ -19,4 +20,10 @@
     margin-top: 5px;
     margin-bottom: 5px;
     margin-right: 10px;
+}
+
+.jimu-widget-group .jimu-toggle-button{
+    position: absolute;
+    top: 3px;
+    right: 3px;
 }
