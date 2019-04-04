@@ -64,8 +64,8 @@
 
     "widgets": [
       {
-        "label": "MyDemo",
-        "uri": "widgets/MyDemo/Widget"
+        "label": "MultiFilter",
+        "uri": "widgets/MultiFilter/Widget"
       },
 
 

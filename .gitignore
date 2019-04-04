@@ -2,9 +2,9 @@
 
 /*
 !/.gitignore
-!/widgets/MyDemo/*
+!/widgets/MultiFilter/*
 !/sample-configs/*
 !/README.md
 !/LICENSE
 
-/widgets/MyDemo/**/*.db
+/widgets/MultiFilter/**/*.db
