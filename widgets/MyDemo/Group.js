@@ -49,6 +49,8 @@ define([
       name: null,
       layerFilters: null,
 
+      isFilterSet: false,
+
 
       postCreate: function() {
         this.inherited(arguments);
@@ -65,26 +67,36 @@ define([
       },
 
 
-      setMultiFilter: function( parentId ) {
+      toggleMultiFilter: function( parentId ) {
+        if (!this.isFilterSet) {
+          this.setMultiFilter( parentId, false );
+        } else {
+          this.setMultiFilter( parentId, true );
+        }
+      },
+
+
+      setMultiFilter: function( parentId, reset ) {
         array.forEach(this.layerFilters, lang.hitch( this, function( layerFilter ){
           var layer = this.layerStructure.getNodeById( layerFilter.id );
+          var expr = ""
 
+          if ( !reset ) {
+            expr = layerFilter.partsObj.expr
+            this.isFilterSet = true;
+          } else {
+            expr = ""
+            this.isFilterSet = false;
+          }
 
-          // apply Filter expression to a layer.
-          // This method can be invoked with these 2 format:
-          // 1)
-          // @param  {[string]} layerId         [the layer id]
+          // @param  {[string]} layerId       [the layer id]
           // @param  {[type]} widgetId        [description]
           // @param  {[type]} expression      [description]
           // @param  {[type]} enableMapFilter [true/false or null or undefined]
           // @param  {[type]} useAND [true/false or null or undefined]
           // @param  {[type]} zoomAfterFilter [true/false or null or undefined]
-          // 2)
-          // @param options: an object with all of the above properties.
-          this.filterManager.applyWidgetFilter( layer.id, parentId, layerFilter.partsObj.expr, true, null, null )
+          this.filterManager.applyWidgetFilter( layer.id, parentId, expr, true, false, true )
         }));
-
-
       }
 
     });
