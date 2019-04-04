@@ -70,24 +70,18 @@ define([
       },
 
 
-      startup: function() {
-        console.log('startup');
-      },
-
-
       toggleMultiFilter: function( parentId ) {
         if (!this.isFilterSet) {
-          this.setMultiFilter( parentId, false );
+          this.setMultiFilter( parentId );
         } else {
-          this.setMultiFilter( parentId, true );
+          this.setMultiFilter( parentId );
         }
       },
 
 
-      setMultiFilter: function( parentId, reset ) {
+      setMultiFilter: function( parentId ) {
         array.forEach(this.layerFilters, lang.hitch( this, function( layerFilter ){
           var layer = this.layerStructure.getNodeById( layerFilter.id );
-
           var expr = ""
 
           // Let's determine whether the filter needs to be applied or removed.
@@ -106,6 +100,7 @@ define([
           this.filterManager.applyWidgetFilter( layer.id, parentId, expr, true, false, true )
         }));
 
+        // Let's update the toggle button status.
         if ( !this.isFilterSet ) {
           this.isFilterSet = true;
           this.toggleButton.setValue(true);
@@ -113,7 +108,6 @@ define([
           this.isFilterSet = false;
           this.toggleButton.setValue(false);
         }
-
       }
 
     });
