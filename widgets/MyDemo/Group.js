@@ -22,6 +22,7 @@
 
 define([
     'dijit/_WidgetsInTemplateMixin',
+    'dojo/on',
     'dojo/_base/array',
     'dojo/_base/declare',
     'dojo/_base/lang',
@@ -31,6 +32,7 @@ define([
     'jimu/LayerStructure'],
   function(
     _WidgetsInTemplateMixin,
+    on,
     array,
     declare,
     lang,
@@ -44,7 +46,8 @@ define([
       templateString: template,
       map: null,
       nls: null,
-      parameters: null,
+      name: null,
+      layerFilters: null,
 
 
       postCreate: function() {
@@ -53,7 +56,7 @@ define([
         this.filterManager = FilterManager.getInstance();
 
         // Let's add the group filter name.
-        this.groupName.innerHTML = this.parameters.groupName;
+        this.groupName.innerHTML = this.name;
       },
 
 
@@ -61,7 +64,25 @@ define([
         console.log('startup');
       },
 
-      _initFilters0: function( filter ) {
+
+      setMultiFilter: function( parentId ) {
+        array.forEach(this.layerFilters, lang.hitch( this, function( layerFilter ){
+          var layer = this.layerStructure.getNodeById( layerFilter.id );
+
+
+          // apply Filter expression to a layer.
+          // This method can be invoked with these 2 format:
+          // 1)
+          // @param  {[string]} layerId         [the layer id]
+          // @param  {[type]} widgetId        [description]
+          // @param  {[type]} expression      [description]
+          // @param  {[type]} enableMapFilter [true/false or null or undefined]
+          // @param  {[type]} useAND [true/false or null or undefined]
+          // @param  {[type]} zoomAfterFilter [true/false or null or undefined]
+          // 2)
+          // @param options: an object with all of the above properties.
+          this.filterManager.applyWidgetFilter( layer.id, parentId, layerFilter.partsObj.expr, true, null, null )
+        }));
 
 
       }

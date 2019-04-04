@@ -23,6 +23,7 @@ var test;
 define([
   './Group',
   'dijit/_WidgetsInTemplateMixin',
+  'dojo/on',
   'dojo/_base/array',
   'dojo/_base/declare',
   'dojo/_base/lang',
@@ -32,6 +33,7 @@ define([
 function(
   Group,
   _WidgetsInTemplateMixin,
+  on,
   array,
   declare,
   lang,
@@ -75,13 +77,18 @@ function(
 
 
     _initGroup: function( group ) {
-      var group = new Group({
+      var filterGroup = new Group({
         id: group.groupId,
         map: this.map,
         nls: this.nls,
-        parameters: group
+        name: group.groupName,
+        layerFilters: group.layerFilters
       })
-      group.placeAt(this.groupFilter)
+      filterGroup.placeAt(this.groupFilter)
+
+      on(filterGroup, "click", lang.hitch(this, function(){
+        filterGroup.setMultiFilter(this.id);
+      }));
     }
 
   });
