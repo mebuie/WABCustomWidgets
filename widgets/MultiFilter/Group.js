@@ -79,7 +79,7 @@ define([
       },
 
 
-      setMultiFilter: function( parentId ) {
+      setMultiFilter: function()  {
         array.forEach(this.layerFilters, lang.hitch( this, function( layerFilter ){
           var layer = this.layerStructure.getNodeById( layerFilter.id );
           var expr = ""
@@ -97,7 +97,7 @@ define([
           // @param  {[type]} enableMapFilter [true/false or null or undefined]
           // @param  {[type]} useAND [true/false or null or undefined]
           // @param  {[type]} zoomAfterFilter [true/false or null or undefined]
-          this.filterManager.applyWidgetFilter( layer.id, parentId, expr, true, false, true )
+          this.filterManager.applyWidgetFilter( layer.id, this.id, expr, true, false, true )
         }));
 
         // Let's update the toggle button status.

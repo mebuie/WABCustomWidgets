@@ -87,7 +87,7 @@ function(
       filterGroup.placeAt(this.groupFilter)
 
       on(filterGroup, "click", lang.hitch(this, function(){
-        filterGroup.toggleMultiFilter(this.id);
+        filterGroup.toggleMultiFilter();
       }));
     }
 
