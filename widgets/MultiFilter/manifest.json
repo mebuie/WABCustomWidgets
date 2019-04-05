@@ -1,0 +1,13 @@
+{
+  "name": "MultiFilter",
+  "platform": "HTML",
+  "version": "2.11",
+  "wabVersion": "2.11",
+  "author": "Mark Buie",
+  "description": "This widget extends the Filter widget by allowing multiple layers to be filter by group.",
+  "copyright": "Mark Buie | www.markbuie.com",
+  "license": "http://www.apache.org/licenses/LICENSE-2.0",
+  "properties": {
+    "keepConfigAfterMapSwitched": false
+  }
+}
