@@ -27,9 +27,8 @@ define([
   'dojo/_base/array',
   'dojo/_base/declare',
   'dojo/_base/lang',
-  'jimu/BaseWidget',
-  'jimu/FilterManager',
-  'jimu/LayerStructure'],
+  'jimu/BaseWidget'
+  ],
 function(
   Group,
   _WidgetsInTemplateMixin,
@@ -37,9 +36,7 @@ function(
   array,
   declare,
   lang,
-  BaseWidget,
-  FilterManager,
-  LayerStructure) {
+  BaseWidget) {
 
   return declare([_WidgetsInTemplateMixin, BaseWidget], {
     baseClass: 'jimu-widget-MultiFilter',
