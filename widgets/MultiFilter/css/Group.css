@@ -9,10 +9,16 @@
     font-family: 'Avenir Light', Verdana, Geneva, sans-serif;
     margin-bottom: 5px;
     cursor: pointer;
+    overflow: auto;
 }
 
 .jimu-widget-group:hover {
     background-color: #EEEEEE;
+}
+
+.jimu-widget-group .group-title-container{
+    float: left;
+    width: 90%;
 }
 
 .jimu-widget-group .filter-group {
@@ -20,6 +26,11 @@
     margin-top: 5px;
     margin-bottom: 5px;
     margin-right: 10px;
+}
+
+.jimu-widget-group .group-toggle-container{
+    float: right;
+    width: 10%;
 }
 
 .jimu-widget-group .jimu-toggle-button{
