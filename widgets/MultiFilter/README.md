@@ -1,3 +1,12 @@
 ## MultiFilter
-###### Status: Development
-### A streamlined version of the Group Filter Widget, with the added ability to apply multiple filter groups at time. 
+This widget behaves similar to the Group Filter widget, but with a UI that resembles the Filter Widget. 
+
+The MultiFilter aims to address some of the issues of the Group Filter widget, such as only being able to apply one 
+group filter at a time. In addition, the user has can build independent filter expressions for each layer in the 
+group.  
+
+![example](http://www.markbuie.com/img/github/MultiFilter_Settings.gif)
+#
+
+
+
