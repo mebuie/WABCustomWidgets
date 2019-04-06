@@ -6,15 +6,10 @@ group filter at a time. In addition, the user can build independent filter expre
 group.
 
 ##### Configuration
-
 ![example0](http://www.markbuie.com/img/github/MultiFilter_Settings.gif)
 
 ##### Usage
-
 ![example1](http://mebuie.github.io/img/github/MultiFilter_Usage.gif)
-
-<img src="http://mebuie.github.io/img/github/MultiFilter_Usage.gif?raw=true" width="200px">
-
 #
 
 
