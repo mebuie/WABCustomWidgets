@@ -13,6 +13,8 @@ group.
 
 ![example1](http://mebuie.github.io/img/github/MultiFilter_Usage.gif)
 
+<img src="http://mebuie.github.io/img/github/MultiFilter_Usage.gif?raw=true" width="200px">
+
 #
 
 
