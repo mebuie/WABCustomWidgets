@@ -11,9 +11,8 @@ group.
 
 ##### Usage
 
-![example1](http://www.markbuie.com/img/github/MultiFilter_Usage.gif)
+![example1](http://mebuie.github.io/img/github/MultiFilter_Usage.gif)
 
 #
-
 
 
