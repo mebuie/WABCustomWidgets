@@ -30,7 +30,7 @@ define([
   'jimu/BaseWidget',
   'jimu/FilterManager',
   'jimu/LayerStructure',
-  'jimu/dijit/ToggleButton'
+  './ToggleButton'
 
   ],  function(
     _WidgetsInTemplateMixin,
