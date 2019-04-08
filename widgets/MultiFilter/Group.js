@@ -29,7 +29,8 @@ define([
   'dojo/text!./Group.html',
   'jimu/BaseWidget',
   'jimu/FilterManager',
-  'jimu/LayerStructure',
+  'jimu/LayerInfos/LayerInfos', // v2.6
+  // 'jimu/LayerStructure', // v2.11
   './ToggleButton'
 
   ],  function(
@@ -41,7 +42,8 @@ define([
     template,
     BaseWidget,
     FilterManager,
-    LayerStructure,
+    LayerInfos, // v2.6
+    // LayerStructure, // v2.11
     ToggleButton) {
 
     return declare([_WidgetsInTemplateMixin, BaseWidget], {
@@ -57,7 +59,8 @@ define([
 
       postCreate: function() {
         this.inherited(arguments);
-        this.layerStructure = LayerStructure.getInstance();
+        this.layerInfosObj = LayerInfos.getInstanceSync(); // v2.6
+        // this.layerStructure = LayerStructure.getInstance(); // v2.11
         this.filterManager = FilterManager.getInstance();
 
         // Let's add the group filter name.
@@ -81,7 +84,8 @@ define([
 
       setMultiFilter: function()  {
         array.forEach(this.layerFilters, lang.hitch( this, function( layerFilter ){
-          var layer = this.layerStructure.getNodeById( layerFilter.id );
+          var layer = this.layerInfosObj.getLayerInfoById( layerFilter.id ); //v2.6
+          // var layer = this.layerStructure.getNodeById( layerFilter.id ); // v2.11
           var expr = ""
 
           // Let's determine whether the filter needs to be applied or removed.
