@@ -1,8 +1,8 @@
 {
   "name": "MultiFilter",
   "platform": "HTML",
-  "version": "2.11",
-  "wabVersion": "2.11",
+  "version": "2.6",
+  "wabVersion": "2.6",
   "author": "Mark Buie",
   "description": "This widget extends the Filter widget by allowing multiple layers to be filter by group.",
   "copyright": "Mark Buie | www.markbuie.com",
