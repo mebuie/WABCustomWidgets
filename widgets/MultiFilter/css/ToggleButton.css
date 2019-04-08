@@ -1,0 +1,30 @@
+/* toggle button*/
+
+.jimu-toggle-button {
+  width: 34px;
+  height: 19px;
+  background: #999;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.jimu-toggle-button.checked {
+  background: #009966;
+}
+
+.jimu-toggle-button .inner {
+  width: 14px;
+  height: 14px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 3px;
+}
+
+.jimu-toggle-button.checked .inner {
+  float: right;
+}
+
+.jimu-rtl .jimu-toggle-button.checked .inner{
+  float: left;
+}
