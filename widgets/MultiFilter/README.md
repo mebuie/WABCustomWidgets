@@ -1,4 +1,6 @@
 ## MultiFilter
+###### WAB v2.6
+
 This widget behaves similar to the Group Filter widget, but with a UI that resembles the Filter Widget. 
 
 The MultiFilter aims to address some of the issues of the Group Filter widget, such as only being able to apply one 
