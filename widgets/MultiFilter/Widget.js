@@ -51,8 +51,9 @@ function(
       // this.config
       //  groups: Array
       //   0:
-      //    groupId:
-      //    groupName:
+      //    groupId: Integer
+      //    groupName: String
+      //    onByDefault: boolean
       //    layerFilters: Array
       //     0:
       //      filterId:
@@ -82,6 +83,11 @@ function(
         layerFilters: group.layerFilters
       })
       filterGroup.placeAt(this.groupFilter)
+
+      // Apply the filter if onByDefault is true. 
+      if ( group.onByDefault ) {
+        filterGroup.setMultiFilter();
+      }
 
       on(filterGroup, "click", lang.hitch(this, function(){
         filterGroup.toggleMultiFilter();
