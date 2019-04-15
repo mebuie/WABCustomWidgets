@@ -6,6 +6,7 @@ define({
     newGroup: "New Group Filter",
     newFilter: "New Layer",
     groupName: "Filter Group Name",
+    onByDefault: "Filter on by default",
     groupNameValidationBoxHint: "Give your group a name",
     layer: "Layer",
     errName: "Please enter a name for each group filter.",
