@@ -10,6 +10,14 @@
     margin-right: 10px;
 }
 
+.jimu-widget-groupfilter-setting .left {
+    float: left;
+}
+
+.jimu-widget-groupfilter-setting .attach-points {
+    display: inline-block;
+}
+
 .jimu-widget-groupfilter-setting #filter-container {
     background-color: #e1e1e1;
     border-color: #e1e1e1;
@@ -26,19 +34,26 @@
     margin-left: 10px;
 }
 
-.jimu-widget-groupfilter-setting .left {
-    float: left;
-}
-
 .jimu-widget-groupfilter-setting .groupName-container {
     margin-left: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
+.jimu-widget-groupfilter-setting .group-header {
+    display: flex;
+    align-items: center;
+}
+
 .jimu-widget-groupfilter-setting .groupName-textbox {
     margin-left: 10px;
+    margin-right: 40px;
     width: 275px;
+}
+
+.jimu-widget-groupfilter-setting .jimu-checkbox {
+    margin-top: 2px;
+    margin-right: 10px;
 }
 
 .jimu-widget-groupfilter-setting .group-block-delete-button{

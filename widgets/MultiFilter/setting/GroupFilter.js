@@ -33,9 +33,11 @@ define([
     'dojo/_base/array',
     'dojo/_base/declare',
     'dojo/_base/lang',
-    'dojo/text!./GroupFilter.html'
+    'dojo/text!./GroupFilter.html',
+    'jimu/dijit/CheckBox'
   ],
-  function(SingleFilter, _TemplatedMixin, _WidgetBase, _WidgetsInTemplateMixin, registry, ValidationTextBox, on, domConstruct, query, array, declare, lang, template ) {
+  function(SingleFilter, _TemplatedMixin, _WidgetBase, _WidgetsInTemplateMixin, registry, ValidationTextBox, on,
+           domConstruct, query, array, declare, lang, template, CheckBox ) {
 
     return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
       baseClass: 'jimu-widget-groupfilter-setting',
@@ -113,6 +115,13 @@ define([
           required: "true"
         });
         domConstruct.place(this.groupNameValidationBox.domNode, this.groupNameValidationBoxNode);
+
+        // Let's add a checkbox so the user can toggle the default state of the group filter.
+        this.filterOnByDefault = new CheckBox({
+          label: this.onByDefault
+        });
+        this.filterOnByDefault.placeAt(this.filterOnByDefaultNode);
+        this.filterOnByDefault.setValue(false);
 
         // If we were given parameters, let's assign them to the group filter.
         if ( this.parameters ) {
