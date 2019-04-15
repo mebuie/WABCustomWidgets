@@ -97,6 +97,7 @@ define([
         var config = {
           groupId: this.id,
           groupName: this.groupNameValidationBox.get('value'),
+          onByDefault: this.filterOnByDefault.getValue(),
           layerFilters: layerFilters
         }
         return config;
@@ -125,7 +126,8 @@ define([
 
         // If we were given parameters, let's assign them to the group filter.
         if ( this.parameters ) {
-          this.groupNameValidationBox.set('value', this.parameters.groupName)
+          this.groupNameValidationBox.set('value', this.parameters.groupName);
+          this.filterOnByDefault.setValue(this.parameters.onByDefault);
         }
 
         // Let's create a way for the user to delete a group filter.
