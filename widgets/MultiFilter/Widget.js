@@ -84,7 +84,7 @@ function(
       })
       filterGroup.placeAt(this.groupFilter)
 
-      // Apply the filter if onByDefault is true. 
+      // Apply the filter if onByDefault is true.
       if ( group.onByDefault ) {
         filterGroup.setMultiFilter();
       }
