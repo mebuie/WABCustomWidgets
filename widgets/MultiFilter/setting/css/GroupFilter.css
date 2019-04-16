@@ -51,9 +51,16 @@
     width: 275px;
 }
 
+.jimu-widget-groupfilter-setting .checkbox-first {
+    margin-top: 20px;
+}
+
 .jimu-widget-groupfilter-setting .jimu-checkbox {
-    margin-top: 2px;
-    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.jimu-widget-groupfilter-setting .operator-selector {
+    margin-bottom: 8px;
 }
 
 .jimu-widget-groupfilter-setting .group-block-delete-button{

@@ -26,6 +26,7 @@ define([
     'dijit/_WidgetBase',
     'dijit/_WidgetsInTemplateMixin',
     'dijit/registry',
+    "dijit/form/Select",
     'dijit/form/ValidationTextBox',
     'dojo/on',
     'dojo/dom-construct',
@@ -36,7 +37,7 @@ define([
     'dojo/text!./GroupFilter.html',
     'jimu/dijit/CheckBox'
   ],
-  function(SingleFilter, _TemplatedMixin, _WidgetBase, _WidgetsInTemplateMixin, registry, ValidationTextBox, on,
+  function(SingleFilter, _TemplatedMixin, _WidgetBase, _WidgetsInTemplateMixin, registry, Select, ValidationTextBox, on,
            domConstruct, query, array, declare, lang, template, CheckBox ) {
 
     return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
@@ -98,6 +99,8 @@ define([
           groupId: this.id,
           groupName: this.groupNameValidationBox.get('value'),
           onByDefault: this.filterOnByDefault.getValue(),
+          overrideDefExp: this.overrideDefExpBtn.getValue(),
+          operator: this.operatorSelectBtn.get('value'),
           layerFilters: layerFilters
         }
         return config;
@@ -119,15 +122,34 @@ define([
 
         // Let's add a checkbox so the user can toggle the default state of the group filter.
         this.filterOnByDefault = new CheckBox({
-          label: this.onByDefault
+          label: this.nls.onByDefault
         });
         this.filterOnByDefault.placeAt(this.filterOnByDefaultNode);
         this.filterOnByDefault.setValue(false);
+
+        // Let's add a checkbox so the user can toggle overriding the definition expression.
+        this.overrideDefExpBtn = new CheckBox({
+          label: this.nls.overrideDefExp
+        });
+        this.overrideDefExpBtn.placeAt(this.overrideDefExpNode);
+        this.overrideDefExpBtn.setValue(false);
+
+        // Let's add an operator selection to handle how we append the group filter when a definition expression exists.
+        this.operatorSelectBtn = new Select({
+          options: [
+            { label: "AND", value: "AND"},
+            { label: "OR", value: "OR"}
+          ]
+        });
+        this.operatorSelectBtn.placeAt(this.operatorSelectNode);
+        this.operatorSelectBtn.startup();
 
         // If we were given parameters, let's assign them to the group filter.
         if ( this.parameters ) {
           this.groupNameValidationBox.set('value', this.parameters.groupName);
           this.filterOnByDefault.setValue(this.parameters.onByDefault);
+          this.overrideDefExpBtn.setValue(this.parameters.overrideDefExp);
+          this.operatorSelectBtn.set('value', this.parameters.operator);
         }
 
         // Let's create a way for the user to delete a group filter.

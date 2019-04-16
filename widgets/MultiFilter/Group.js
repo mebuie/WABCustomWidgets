@@ -52,6 +52,8 @@ define([
       map: null,
       nls: null,
       name: null,
+      overrideDefExp: null,
+      operator: null,
       layerFilters: null,
 
       isFilterSet: false,
@@ -62,6 +64,9 @@ define([
         this.layerInfosObj = LayerInfos.getInstanceSync(); // v2.6
         // this.layerStructure = LayerStructure.getInstance(); // v2.11
         this.filterManager = FilterManager.getInstance();
+
+        // Dojo Select values are in String format, let's convert that to boolean.
+        this.booleanOperator = (this.operator === 'AND')
 
         // Let's add the group filter name.
         this.groupName.innerHTML = this.name;
@@ -101,7 +106,7 @@ define([
           // @param  {[type]} enableMapFilter [true/false or null or undefined]
           // @param  {[type]} useAND [true/false or null or undefined]
           // @param  {[type]} zoomAfterFilter [true/false or null or undefined]
-          this.filterManager.applyWidgetFilter( layer.id, this.id, expr, true, false, true )
+          this.filterManager.applyWidgetFilter( layer.id, this.id, expr, this.overrideDefExp, this.booleanOperator, true )
         }));
 
         // Let's update the toggle button status.

@@ -5,23 +5,27 @@
         <div class="groupName-container">
 
             <div class="group-header">
-            <div class="left" style="margin-top:3px;">${nls.groupName}:</div>
-            <div class="attach-points left" data-dojo-attach-point="groupNameValidationBoxNode"></div>
-            <div class="attach-points left" data-dojo-attach-point="filterOnByDefaultNode"></div>
-            <div>${nls.onByDefault}</div>
+                <div class="left" style="margin-top:3px;">${nls.groupName}:</div>
+                <div class="attach-points left" data-dojo-attach-point="groupNameValidationBoxNode"></div>
             </div>
+
+            <div class="checkbox-first" data-dojo-attach-point="filterOnByDefaultNode"></div>
+
+            <div class="group-header">
+                <div data-dojo-attach-point="overrideDefExpNode"></div>
+                <div class="operator-selector" data-dojo-attach-point="operatorSelectNode"></div>
+            </div>
+
 
             <div id="filter-container" data-dojo-attach-point="layerFilterNode"></div>
 
             <div class="group-block-delete-btn-container" data-dojo-attach-point="groupBlockDelete">
-
-            <div class="add-filter-button-container jimu-not-selectable">
-                <div class="add-filter-button" data-dojo-attach-event="click:_onBtnAddGroupClicked">
-                    <div class="icon"></div>
-                    <div class="tip">${nls.newFilter}</div>
+                <div class="add-filter-button-container jimu-not-selectable">
+                    <div class="add-filter-button" data-dojo-attach-event="click:_onBtnAddGroupClicked">
+                        <div class="icon"></div>
+                        <div class="tip">${nls.newFilter}</div>
+                    </div>
                 </div>
-            </div>
-
             </div>
 
         </div>

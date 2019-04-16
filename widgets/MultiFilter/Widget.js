@@ -54,6 +54,8 @@ function(
       //    groupId: Integer
       //    groupName: String
       //    onByDefault: boolean
+      //    overrideDefExp: boolean
+      //    operator: String
       //    layerFilters: Array
       //     0:
       //      filterId:
@@ -68,18 +70,14 @@ function(
       }
     },
 
-
-    startup: function() {
-      console.log('startup');
-    },
-
-
     _initGroup: function( group ) {
       var filterGroup = new Group({
         id: group.groupId,
         map: this.map,
         nls: this.nls,
         name: group.groupName,
+        overrideDefExp: group.overrideDefExp,
+        operator: group.operator,
         layerFilters: group.layerFilters
       })
       filterGroup.placeAt(this.groupFilter)
