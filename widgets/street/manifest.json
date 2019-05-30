@@ -1,0 +1,18 @@
+{
+  "name": "Street",
+  "platform": "HTML",
+  "version": "2.6",
+  "wabVersion": "2.6",
+  "author": "Mark Buie",
+  "description": "Opens a webpage with the google streetview.",
+  "copyright": "Mark Buie | www.markbuie.com",
+  "license": "http://www.apache.org/licenses/LICENSE-2.0",
+  "properties": {
+    "inPanel": false,
+    "hasConfig": false,
+    "hasSettingPage": false,
+    "hasSettingUIFile": false,
+    "keepConfigAfterMapSwitched": true,
+    "supportMultiInstance": false
+  }
+}

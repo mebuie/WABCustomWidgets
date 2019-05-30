@@ -3,6 +3,7 @@
 /*
 !/.gitignore
 !/widgets/MultiFilter/*
+!/widgets/Street/*
 !/sample-configs/*
 !/README.md
 !/LICENSE
