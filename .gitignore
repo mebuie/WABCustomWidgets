@@ -2,8 +2,8 @@
 
 /*
 !/.gitignore
-!/widgets/MultiFilter/*
-!/widgets/StreetView/*
+!/widgets/MultiFilter/**
+!/widgets/StreetView/**
 !/sample-configs/*
 !/README.md
 !/LICENSE
