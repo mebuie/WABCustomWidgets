@@ -2,3 +2,46 @@
 .jimu-widget-street{
 
  }
+
+.street-view-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background-color: transparent;
+}
+
+.street-view-viewport {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    width: 100px;
+    margin-bottom: 2px;
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 5px;
+    border-color: #286f32;
+    background-color: transparent;
+}
+
+.street-view-button {
+    float: right;
+    display: flex;
+    justify-content: center;
+    height: 30px;
+    width: 50px;
+
+    background-color: white;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    border-radius:10px;
+    border: 2px solid #ffaa00;
+    cursor:pointer;
+    color:#ffffff;
+    text-decoration:none;
+}
+
+.street-view-icon {
+    height: 100%;
+    object-fit: contain;
+}
