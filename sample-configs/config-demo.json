@@ -68,8 +68,8 @@
         "uri": "widgets/MultiFilter/Widget"
       },
       {
-        "label": "Street",
-        "uri": "widgets/Street/Widget"
+        "label": "StreetView",
+        "uri": "widgets/StreetView/Widget"
       },
 
 

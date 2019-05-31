@@ -1,16 +1,16 @@
 
-.jimu-widget-street{
+.jimu-widget-streetview{
 
  }
 
-.street-view-container {
+.jimu-widget-streetview .street-view-container {
     position: absolute;
     left: 50%;
     top: 50%;
     background-color: transparent;
 }
 
-.street-view-viewport {
+.jimu-widget-streetview .street-view-viewport {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,7 +24,7 @@
     background-color: transparent;
 }
 
-.street-view-button {
+.jimu-widget-streetview .street-view-button {
     float: right;
     display: flex;
     justify-content: center;
@@ -41,7 +41,7 @@
     text-decoration:none;
 }
 
-.street-view-icon {
+.jimu-widget-streetview .street-view-icon {
     height: 100%;
     object-fit: contain;
 }

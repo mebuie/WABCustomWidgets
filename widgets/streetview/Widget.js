@@ -15,9 +15,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-// This file was created by modifying Esri's Filter and GroupFilter widgets,
-// as well as custom code and logic by Mark Buie to add support for grouped
-// layer filter to the Filter Widget.
+// This file was created using Esri's Web Appbuilder for ArcGIS
+// Developers Edition API Reference Guide.
 ///////////////////////////////////////////////////////////////////////////
 var test;
 define([
@@ -28,6 +27,7 @@ define([
   'dojo/_base/array',
   'dojo/_base/declare',
   'dojo/_base/lang',
+  'esri/geometry/webMercatorUtils',
   'jimu/BaseWidget'
   ],
 function(
@@ -38,10 +38,11 @@ function(
   array,
   declare,
   lang,
+  webMercatorUtils,
   BaseWidget) {
 
   return declare([_WidgetsInTemplateMixin, BaseWidget], {
-    baseClass: 'jimu-widget-street',
+    baseClass: 'jimu-widget-streetview',
 
 
     postCreate: function() {
@@ -53,7 +54,7 @@ function(
       // Create the widget dom.
       var pegman = this.folderUrl + 'images/pegman.png'
       var streetContainer = domConstruct.toDom("<div class='street-view-container'>\n" +
-        "    <div class=\"street-view-viewport\">\n" +
+        "    <div id='street-view-viewport' class=\"street-view-viewport\">\n" +
         "        <p>+</p>\n" +
         "    </div>\n" +
         "    <div id='street-view-button' class=\"street-view-button\">\n" +
@@ -67,8 +68,6 @@ function(
 
       // Add a click handler on the pegman button.
       this.onClick(dom.byId('street-view-button'))
-
-
     },
 
 
@@ -121,13 +120,32 @@ function(
     },
 
     onClick: function(element) {
-      element.onclick = test
+      var id = this.id
+      var map = this.map
 
-      function test(e) {
+      element.onclick = getViewportCoordinates
+
+      function getViewportCoordinates(e) {
         e = e || window.event;
-        e.preventDefault();
 
-        console.log("clicked")
+        var viewportContainer = document.getElementById(id)
+        var viewport = document.getElementById('street-view-viewport')
+
+        var x = viewportContainer.offsetLeft + viewport.offsetWidth / 2
+        var y = viewportContainer.offsetTop + viewport.offsetHeight / 2
+
+        var coordinates = map.toMap({x: x, y: y})
+        console.log(coordinates)
+
+        var value = webMercatorUtils.xyToLngLat(coordinates.x, coordinates.y, true);
+        console.log(value)
+
+        var googleURL = 'https://www.google.com/maps/@?api=1&map_action=pano&viewpoint='
+
+        var url = googleURL + value[1] + "," + value[0]
+
+        window.open(url)
+
       }
     }
 

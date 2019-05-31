@@ -8,3 +8,11 @@ group filter at a time. In addition, the user can build independent filter expre
 group.  
 
 ![example](http://www.markbuie.com/img/github/MultiFilter_Settings.gif)
+
+#
+[StreetView](https://github.com/mebuie/WABCustomWidgets/tree/master/widgets/StreetView) 
+
+The StreetView Widget opens a new browser tab showing the closest Google Street view at the selected location.
+If no Street View exists, the map returns black.  
+
+![example](http://www.markbuie.com/img/github/StreetView.gif)
