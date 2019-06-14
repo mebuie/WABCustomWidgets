@@ -53,14 +53,18 @@ function(
 
       // Create the widget dom.
       var pegman = this.folderUrl + 'images/pegman.png'
-      var streetContainer = domConstruct.toDom("<div class='street-view-container'>\n" +
-        "    <div id='street-view-viewport' class=\"street-view-viewport\">\n" +
-        "        <p>+</p>\n" +
-        "    </div>\n" +
-        "    <div id='street-view-button' class=\"street-view-button\">\n" +
-        "        <img class=\"street-view-icon\" src='" + pegman + "'>\n" +
-        "    </div>\n" +
-        "</div>");
+      var streetContainer = domConstruct.toDom(
+        "<div class='street-view-container'>" +
+        " <div id='street-view-viewport' class='street-view-viewport'>" +
+        "   <p>+</p>" +
+        " </div>" +
+        " <div class='street-view-button-container'>" +
+        "   <div id='street-view-button' class='street-view-button'>" +
+        "     <img class='street-view-icon' src=" + pegman + " height='45' width='31'/>" +
+        "   </div>" +
+        " </div>" +
+        "</div>"
+      );
       domConstruct.place(streetContainer, this.id, "only")
 
       // Make the widget draggable

@@ -3,11 +3,26 @@
 
  }
 
+.jimu-widget-streetview .street-view-button-container {
+    width: 50px;
+    background-color: #e0e0e0;
+    margin: 0;
+    padding: 0;
+    border-bottom-right-radius: 35px;
+    border: 2px outset;
+}
+
 .jimu-widget-streetview .street-view-container {
     position: absolute;
     left: 50%;
     top: 50%;
+    display: flex;
+    width: 150px;
     background-color: transparent;
+    border-style: solid;
+    border-width: 4px;
+    border-color: #e0e0e0;
+    border-bottom-right-radius: 40px;
 }
 
 .jimu-widget-streetview .street-view-viewport {
@@ -16,29 +31,18 @@
     justify-content: center;
     height: 100px;
     width: 100px;
-    margin-bottom: 2px;
-    border-style: solid;
-    border-width: 5px;
-    border-radius: 5px;
-    border-color: #286f32;
     background-color: transparent;
+    border: 2px inset;
+    cursor: move;
 }
 
 .jimu-widget-streetview .street-view-button {
-    float: right;
     display: flex;
     justify-content: center;
-    height: 30px;
-    width: 50px;
-
-    background-color: white;
-    -moz-border-radius:10px;
-    -webkit-border-radius:10px;
-    border-radius:10px;
-    border: 2px solid #ffaa00;
-    cursor:pointer;
+    height: 100%;
+    cursor: pointer;
     color:#ffffff;
-    text-decoration:none;
+    border-bottom-right-radius: 40px;
 }
 
 .jimu-widget-streetview .street-view-icon {
