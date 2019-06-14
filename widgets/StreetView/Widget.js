@@ -68,59 +68,34 @@ function(
       domConstruct.place(streetContainer, this.id, "only")
 
       // Make the widget draggable
-      this.dragElement(dom.byId(this.id))
+      on(dom.byId("street-view-viewport"), "mousedown", lang.hitch(this, function(e) {
+        this.moveParentElement(e, dom.byId(this.id))
+      }));
 
       // Add a click handler on the pegman button.
       this.onClick(dom.byId('street-view-button'))
     },
 
+    moveParentElement: function(e, parentElement) {
+      e.stopPropagation();
+      var pos3 = e.clientX
+      var pos4 = e.clientY
 
-    /**
-     *
-     * Source: Modified from w3schools.com Draggable HTML Element tutorial
-     *         https://www.w3schools.com/howto/howto_js_draggable.asp
-     *
-     * @param elmnt
-     */
-    dragElement: function(elmnt) {
-      var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-      if (dom.byId(elmnt.id + "header")) {
-        // if present, the header is where you move the DIV from:
-        dom.byId(elmnt.id + "header").onmousedown = dragMouseDown;
-      } else {
-        // otherwise, move the DIV from anywhere inside the DIV:
-        elmnt.onmousedown = dragMouseDown;
-      }
+      var dragEvent = on(document, "mousemove", lang.hitch(this, function(e) {
+        var pos1 = pos3 - e.clientX
+        var pos2 = pos4 - e.clientY
+        pos3 = e.clientX
+        pos4 = e.clientY
 
-      function dragMouseDown(e) {
-        e = e || window.event;
-        e.preventDefault();
-        // get the mouse cursor position at startup:
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        document.onmouseup = closeDragElement;
-        // call a function whenever the cursor moves:
-        document.onmousemove = elementDrag;
-      }
+        parentElement.style.top = (parentElement.offsetTop - pos2) + "px"
+        parentElement.style.left = (parentElement.offsetLeft - pos1) + "px"
+      }))
 
-      function elementDrag(e) {
-        e = e || window.event;
-        e.preventDefault();
-        // calculate the new cursor position:
-        pos1 = pos3 - e.clientX;
-        pos2 = pos4 - e.clientY;
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        // set the element's new position:
-        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-      }
+      var endDragEvent = on(document, "mouseup", lang.hitch(this, function(e){
+        dragEvent.remove()
+        endDragEvent.remove()
+      }))
 
-      function closeDragElement() {
-        // stop moving when mouse button is released:
-        document.onmouseup = null;
-        document.onmousemove = null;
-      }
     },
 
     onClick: function(element) {
@@ -130,17 +105,15 @@ function(
       element.onclick = getViewportCoordinates
 
       function getViewportCoordinates(e) {
-        e = e || window.event;
 
+        // Get the map coordinates that correspond to the middle of #street-view-viewport
         var viewportContainer = document.getElementById(id)
         var viewport = document.getElementById('street-view-viewport')
-
         var x = viewportContainer.offsetLeft + viewport.offsetWidth / 2
         var y = viewportContainer.offsetTop + viewport.offsetHeight / 2
-
         var coordinates = map.toMap({x: x, y: y})
-        console.log(coordinates)
 
+        
         var value = webMercatorUtils.xyToLngLat(coordinates.x, coordinates.y, true);
         console.log(value)
 
