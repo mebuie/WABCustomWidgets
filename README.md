@@ -1,5 +1,5 @@
 ## WABCustomWidgets
-A repository of custom widgets for use with Esri's Web AppBuilder Developer Addition or hosted on Portal. 
+A repository of custom widgets for use with Esri's Web AppBuilder Developer Edition or hosted on Portal. 
 ## Widgets
 [MultiFilter](https://github.com/mebuie/WABCustomWidgets/tree/master/widgets/MultiFilter) 
 
